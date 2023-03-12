@@ -1,3 +1,41 @@
-header {
-  color: green;
+$bg-gradient: linear-gradient(0deg, #fff 0%, #62ad9b 110%);
+
+.header {
+  height: 10vh;
+  width: 100%;
+  align-items: center;
+  background: #62ad9b;
+  display: flex;
+  justify-content: center;
+  padding: 6px 12px;
+  border-bottom: 0.2px solid #62ad9b;
+
+  &__links {
+    display: flex;
+    gap: 40px;
+  }
+
+  &__btn {
+    font-size: 1.2rem;
+    box-shadow: none;
+    background-color: transparent;
+    color: black;
+    transition: background-color 150ms;
+    line-height: 50px;
+    margin: 0 auto;
+    width: 140px;
+    text-align: center;
+    text-decoration: none;
+    border: 0;
+    border-radius: 50px;
+
+    &:hover {
+      background: darken($color: #62ad9b, $amount: 15%);
+      color: #fff;
+    }
+
+    &:active {
+      background: lighten($color: #62ad9b, $amount: 10%);
+    }
+  }
 }

@@ -4,8 +4,15 @@ import './Header.scss';
 class Header extends Component {
   render() {
     return (
-      <header>
-        <h1>Something</h1>
+      <header className="header">
+        <div className="header__links">
+          <a className="header__btn" href="">
+            Home page
+          </a>
+          <a className="header__btn" href="">
+            About us
+          </a>
+        </div>
       </header>
     );
   }
