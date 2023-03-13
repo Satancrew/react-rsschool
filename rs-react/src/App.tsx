@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Header from './components/Header/Header';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
@@ -10,7 +9,6 @@ class App extends Component {
   render() {
     return (
       <>
-        <Header />
         <Routes>
           <Route path="/home" element={<HomePage />}></Route>
           <Route path="/about" element={<AboutUsPage />}></Route>
