@@ -1,3 +1,4 @@
+import Search from '../Search/Search';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
@@ -14,6 +15,7 @@ class Header extends Component {
             About us
           </Link>
         </div>
+        <Search />
       </header>
     );
   }
