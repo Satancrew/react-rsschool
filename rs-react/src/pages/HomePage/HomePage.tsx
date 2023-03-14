@@ -1,14 +1,40 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Header from '../../components/Header/Header';
+import Card from '../../components/Card/Card';
+import './HomePage.scss';
+import { IProduct } from '../../common/interface';
 
 class HomePage extends Component {
+  state = {
+    products: [],
+  };
+
+  componentDidMount() {
+    axios.get(`https://fakestoreapi.com/products`).then((res) => {
+      const products: IProduct[] = res.data;
+      this.setState({ products });
+    });
+  }
+
   render() {
     return (
       <>
         <Header />
-        <h1>Test h1</h1>
-        <h2>Test h2</h2>
-        <h3>Test h3</h3>
+        <main className="main">
+          {this.state.products.map((el: IProduct) => (
+            <Card
+              key={el.id}
+              title={el.title}
+              price={el.price}
+              description={el.description}
+              image={el.image}
+              rating={el.rating.rate}
+              stock={el.rating.count}
+              category={el.category}
+            />
+          ))}
+        </main>
       </>
     );
   }

@@ -1,11 +1,6 @@
 import React, { ChangeEvent, Component } from 'react';
 import './Search.scss';
 
-// interface SearchPanel {
-//   term: string;
-//   onSearchChange: (e: MouseEvent | KeyboardEvent) => string;
-// }
-
 class Search extends Component {
   state = {
     term: '',
