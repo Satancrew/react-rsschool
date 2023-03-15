@@ -10,9 +10,9 @@ class App extends Component {
     return (
       <>
         <Routes>
-          <Route path="/home" element={<HomePage />}></Route>
-          <Route path="/about" element={<AboutUsPage />}></Route>
-          <Route path="*" element={<ErrorPage />}></Route>
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/about" element={<AboutUsPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </>
     );

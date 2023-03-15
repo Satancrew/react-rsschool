@@ -14,6 +14,7 @@ class HomePage extends Component {
     axios.get(`https://fakestoreapi.com/products`).then((res) => {
       const products: IProduct[] = res.data;
       this.setState({ products });
+      console.log(products);
     });
   }
 
@@ -27,10 +28,8 @@ class HomePage extends Component {
               key={el.id}
               title={el.title}
               price={el.price}
-              description={el.description}
               image={el.image}
-              rating={el.rating.rate}
-              stock={el.rating.count}
+              rating={el.rating}
               category={el.category}
             />
           ))}
