@@ -21,7 +21,7 @@ class HomePage extends Component {
   render() {
     return (
       <>
-        <Header />
+        <Header checkBtn={true} />
         <main className="main">
           {this.state.products.map((el: IProduct) => (
             <Card

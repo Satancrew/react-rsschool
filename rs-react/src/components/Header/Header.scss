@@ -11,6 +11,10 @@
   &__links {
     display: flex;
     gap: 40px;
+
+    .active {
+      color: white;
+    }
   }
 
   &__btn {
@@ -29,7 +33,7 @@
 
     &:hover {
       background: darken($color: #62ad9b, $amount: 15%);
-      color: #fff;
+      color: #d5c9c9;
     }
 
     &:active {

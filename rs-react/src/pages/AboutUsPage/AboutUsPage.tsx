@@ -5,7 +5,7 @@ class AboutUsPage extends Component {
   render() {
     return (
       <>
-        <Header />
+        <Header checkBtn={false} />
         <h1>About 123</h1>
       </>
     );
