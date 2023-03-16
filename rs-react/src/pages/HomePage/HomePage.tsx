@@ -7,14 +7,13 @@ import { IProduct } from '../../common/interface';
 
 class HomePage extends Component {
   state = {
-    products: [],
+    products: [] as IProduct[],
   };
 
   componentDidMount() {
     axios.get(`https://fakestoreapi.com/products`).then((res) => {
       const products: IProduct[] = res.data;
       this.setState({ products });
-      console.log(products);
     });
   }
 
@@ -26,6 +25,7 @@ class HomePage extends Component {
           {this.state.products.map((el: IProduct) => (
             <Card
               key={el.id}
+              id={el.id}
               title={el.title}
               price={el.price}
               image={el.image}

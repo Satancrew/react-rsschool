@@ -6,8 +6,15 @@ class Search extends Component {
     term: '',
   };
 
+  componentDidMount() {
+    const term = localStorage.getItem('value');
+    this.setState({ term });
+  }
+
   onSearchChange = (ev: ChangeEvent<HTMLInputElement>) => {
     const term = ev.target.value;
+    console.log(term);
+    localStorage.setItem('value', this.state.term);
     this.setState({ term });
   };
 
@@ -18,7 +25,7 @@ class Search extends Component {
           <input
             type="text"
             className="search__input"
-            placeholder="What are you looking?"
+            placeholder="What are u looking for?"
             value={this.state.term}
             onChange={this.onSearchChange}
           />

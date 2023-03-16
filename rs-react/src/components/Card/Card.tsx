@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 import './Card.scss';
 
 class Card extends Component<IProduct> {
-  componentDidMount() {
-    console.log('component did mount');
-  }
   render() {
     const { title, price, image, rating, category } = this.props;
     return (
