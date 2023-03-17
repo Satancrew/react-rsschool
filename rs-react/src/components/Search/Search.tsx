@@ -13,25 +13,23 @@ class Search extends Component {
 
   onSearchChange = (ev: ChangeEvent<HTMLInputElement>) => {
     const term = ev.target.value;
-    console.log(term);
-    localStorage.setItem('value', this.state.term);
+    localStorage.setItem('value', term);
     this.setState({ term });
   };
 
   render() {
+    console.log(this.state.term);
     return (
       <div className="search">
         <div className="search__wrapper">
           <input
             type="text"
+            name="text"
             className="search__input"
             placeholder="What are u looking for?"
             value={this.state.term}
             onChange={this.onSearchChange}
           />
-          <button type="submit" className="search__btn">
-            <i className="bx bx-search search__icon"></i>
-          </button>
         </div>
       </div>
     );

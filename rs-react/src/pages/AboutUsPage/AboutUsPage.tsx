@@ -6,7 +6,7 @@ class AboutUsPage extends Component {
     return (
       <>
         <Header checkBtn={false} />
-        <h1>About 123</h1>
+        <h1>About page</h1>
       </>
     );
   }
