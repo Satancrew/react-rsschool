@@ -1,10 +1,9 @@
-import { BrowserRouter } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import React from 'react';
 import Card from './Card';
 
 describe('Accordion test', () => {
-  test('should show title all the time', () => {
+  test('should show cards all the time', () => {
     render(
       <Card
         key={5}
