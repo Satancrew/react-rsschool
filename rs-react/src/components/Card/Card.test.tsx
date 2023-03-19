@@ -2,8 +2,8 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import Card from './Card';
 
-describe('Accordion test', () => {
-  test('should show cards all the time', () => {
+describe('Card test', () => {
+  test('should show card', () => {
     render(
       <Card
         key={5}
