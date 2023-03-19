@@ -18,7 +18,6 @@ class Search extends Component {
   };
 
   render() {
-    console.log(this.state.term);
     return (
       <div className="search">
         <div className="search__wrapper">
