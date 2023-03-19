@@ -6,7 +6,7 @@ import React from 'react';
 describe('Search />', () => {
   test('The input field and its props', () => {
     render(<Search />);
-    const input = document.querySelector('input') as HTMLInputElement;
+    const input = document.querySelector('.search__input') as HTMLInputElement;
 
     expect(input).toBeTruthy();
 
