@@ -3,12 +3,16 @@ import './Search.scss';
 
 class Search extends Component {
   state = {
-    term: '',
+    term: localStorage.getItem('value') || '',
   };
 
-  componentDidMount() {
+  componentDidMount(): void {
     const term = localStorage.getItem('value');
     this.setState({ term });
+  }
+
+  componentWillUnmount(): void {
+    localStorage.setItem('value', this.state.term);
   }
 
   onSearchChange = (ev: ChangeEvent<HTMLInputElement>) => {
