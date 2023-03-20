@@ -1,13 +1,13 @@
 import React, { ChangeEvent, Component } from 'react';
 import './Search.scss';
 
-class Search extends Component {
+export class Search extends Component {
   state = {
     term: '',
   };
 
   componentDidMount() {
-    const term = localStorage.getItem('value');
+    const term = localStorage.getItem('value') || '';
     this.setState({ term });
   }
 
@@ -34,5 +34,3 @@ class Search extends Component {
     );
   }
 }
-
-export default Search;

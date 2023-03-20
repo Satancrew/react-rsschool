@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Header from '../../components/Header/Header';
-import Card from '../../components/Card/Card';
+import { Header } from '../../components/Header/Header';
 import './HomePage.scss';
 import { IProduct } from '../../common/interface';
+import { Card } from '../../components/Card/Card';
 
-class HomePage extends Component {
+export class HomePage extends Component {
   state = {
     products: [] as IProduct[],
   };
@@ -20,7 +20,7 @@ class HomePage extends Component {
   render() {
     return (
       <>
-        <Header checkBtn={true} />
+        <Header checkHomeBtn={true} checkAboutBtn={false} />
         <main className="main">
           {this.state.products.map((el: IProduct) => (
             <Card
@@ -38,5 +38,3 @@ class HomePage extends Component {
     );
   }
 }
-
-export default HomePage;

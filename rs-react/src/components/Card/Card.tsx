@@ -2,7 +2,7 @@ import { IProduct } from 'common/interface';
 import React, { Component } from 'react';
 import './Card.scss';
 
-class Card extends Component<IProduct> {
+export class Card extends Component<IProduct> {
   render() {
     const { title, price, image, rating, category } = this.props;
     return (
@@ -21,5 +21,3 @@ class Card extends Component<IProduct> {
     );
   }
 }
-
-export default Card;

@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import Card from './Card';
 import { testData } from '../../common/data';
+import { Card } from './Card';
 
 describe('Card test', () => {
   const product = testData;

@@ -1,6 +1,6 @@
 import { test } from 'vitest';
 import { fireEvent, render } from '@testing-library/react';
-import Search from './Search';
+import { Search } from './Search';
 import React from 'react';
 
 describe('Search />', () => {

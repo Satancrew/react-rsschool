@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './ErrorPage.scss';
 
-class ErrorPage extends Component {
+export class ErrorPage extends Component {
   render() {
     return (
       <section className="error-page">
@@ -18,5 +18,3 @@ class ErrorPage extends Component {
     );
   }
 }
-
-export default ErrorPage;
