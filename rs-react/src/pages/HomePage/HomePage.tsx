@@ -4,6 +4,7 @@ import { Header } from '../../components/Header/Header';
 import './HomePage.scss';
 import { IProduct } from '../../common/interface';
 import { Card } from '../../components/Card/Card';
+import { mockData } from '../../common/data';
 
 export class HomePage extends Component {
   state = {
