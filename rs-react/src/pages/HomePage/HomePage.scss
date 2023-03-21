@@ -1,8 +1,12 @@
 .main {
-  width: 80%;
-  margin: 2% auto;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 40px;
+  width: 100%;
+  &__wrapper {
+    width: 80%;
+    margin: 2% auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
 }
