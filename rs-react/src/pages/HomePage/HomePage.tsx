@@ -7,9 +7,10 @@ import { Card } from '../../components/Card/Card';
 import { mockData } from '../../common/data';
 import { OpenFormButton } from '../../components/OpenFormButton/OpenFormButton';
 
-export class HomePage extends Component {
+export class HomePage extends Component<{ products: IProduct[]; isModal: boolean }> {
   state = {
     products: [] as IProduct[],
+    isModal: false,
   };
 
   componentDidMount() {
@@ -19,12 +20,17 @@ export class HomePage extends Component {
     });
   }
 
+  handleModal(): void {
+    this.setState(true);
+  }
+
   render() {
+    console.log(this.state.isModal);
     return (
       <>
         <Header checkHomeBtn={true} checkAboutBtn={false} />
         <main className="main">
-          <OpenFormButton />
+          <OpenFormButton onClick={this.handleModal} />
           <div className="main__wrapper">
             {this.state.products.map((el: IProduct) => (
               <Card

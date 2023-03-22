@@ -9,3 +9,7 @@ export interface IProduct {
     count: number;
   };
 }
+
+export interface ModalProps {
+  visible: boolean;
+}

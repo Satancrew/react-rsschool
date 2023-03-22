@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './OpenFormButton.scss';
 
 export class OpenFormButton extends Component {
   render() {
     return (
-      <button className="form-btn" type="button">
+      <Link className="form-btn" to="/form">
         Add card
-      </button>
+      </Link>
     );
   }
 }
