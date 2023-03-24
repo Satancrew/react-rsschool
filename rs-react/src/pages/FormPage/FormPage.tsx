@@ -1,54 +1,89 @@
 import { ModalProps } from '../../common/interface';
-import React, { Component } from 'react';
+import React, { ChangeEvent, Component } from 'react';
 import './FormPage.scss';
 
 export class FormPage extends Component<ModalProps, { visible: boolean }> {
+  carName: React.RefObject<HTMLInputElement>;
+  carModel: React.RefObject<HTMLInputElement>;
+  carPrice: React.RefObject<HTMLInputElement>;
+  carProbeg: React.RefObject<HTMLInputElement>;
+  carChecked: React.RefObject<HTMLInputElement>;
   constructor(props: ModalProps) {
     super(props);
+    this.carName = React.createRef();
+    this.carModel = React.createRef();
+    this.carPrice = React.createRef();
+    this.carProbeg = React.createRef();
+    this.carChecked = React.createRef();
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       visible: false,
     };
   }
 
+  handleSubmit(event: ChangeEvent<HTMLFormElement>) {
+    console.log(this.carName.current?.value, '- name');
+    console.log(this.carModel.current?.value, '- model');
+    console.log(this.carPrice.current?.value, '- price');
+    console.log(this.carProbeg.current?.value, '- probeg');
+    console.log(this.carChecked.current?.value, '- checked');
+    event.preventDefault();
+  }
+
   render() {
     return (
       <div className="modal">
-        <form className="form">
+        <form className="form" onSubmit={this.handleSubmit}>
           <div className="form__group">
             <label className="form__label">
-              Название товара:
+              Car name:
               <br />
-              <input type="text" />
+              <input
+                className="form__label-text"
+                type="text"
+                name="carName"
+                defaultValue=""
+                ref={this.carName}
+              />
             </label>
           </div>
-          <div className="form-group">
+          <div className="form__group">
             <label className="form__label">
-              Категория:
+              Model:
               <br />
-              <select>
-                <option>Men`s clothing</option>
-                <option>Jewerly</option>
-                <option>Electronics</option>
-                <option>Women`s clothing</option>
-              </select>
+              <input
+                className="form__label-text"
+                type="text"
+                name="carModel"
+                defaultValue=""
+                ref={this.carModel}
+              />
             </label>
           </div>
-          <div className="form-group">
+          <div className="form__group-numbers">
             <label className="form__label">
               Price:
               <br />
-              <input type="number" />
+              <input type="number" name="carPrice" defaultValue="0" ref={this.carPrice} />
             </label>
-          </div>
-          <div className="form-group">
             <label className="form__label">
-              Rating:
+              Probeg:
               <br />
-              <input type="number" />
+              <input type="number" name="carProbeg" defaultValue="0" ref={this.carProbeg} />
             </label>
           </div>
-
-          <input type="submit" value="Отправить" />
+          <div className="form__group-checkbox">
+            <label className="form__label-checkbox">
+              <input
+                type="checkbox"
+                defaultChecked={false}
+                name="carChecked"
+                ref={this.carChecked}
+              />
+              Check me if u want add car to page
+            </label>
+          </div>
+          <input className="submit" type="submit" value="Отправить" />
         </form>
       </div>
     );
