@@ -8,6 +8,8 @@ export class Header extends Component<{ checkHomeBtn: boolean; checkAboutBtn: bo
     const { checkHomeBtn, checkAboutBtn } = this.props;
     const homePageBtnStyles = checkHomeBtn ? 'header__btn active' : 'header__btn';
     const aboutPageBtnStyles = checkAboutBtn ? 'header__btn active' : 'header__btn';
+    const formPageBtnStyles =
+      !checkHomeBtn && !checkAboutBtn ? 'header__btn active' : 'header__btn';
     return (
       <header className="header">
         <div className="header__links">
@@ -17,6 +19,9 @@ export class Header extends Component<{ checkHomeBtn: boolean; checkAboutBtn: bo
             </Link>
             <Link className={aboutPageBtnStyles} to="/about">
               About us
+            </Link>
+            <Link className={formPageBtnStyles} to="/form">
+              Form Page
             </Link>
           </>
         </div>

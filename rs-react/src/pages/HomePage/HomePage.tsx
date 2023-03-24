@@ -9,16 +9,8 @@ import { OpenFormButton } from '../../components/OpenFormButton/OpenFormButton';
 
 export class HomePage extends Component<{ isModal: boolean; products: IProduct[] }> {
   state = {
-    // products: [] as IProduct[],
     isModal: false,
   };
-
-  // componentDidMount() {
-  //   axios.get(`https://fakestoreapi.com/products`).then((res) => {
-  //     const products: IProduct[] = res.data;
-  //     console.log(products);
-  //   });
-  // }
 
   handleModal(): void {
     this.setState(true);
@@ -29,7 +21,6 @@ export class HomePage extends Component<{ isModal: boolean; products: IProduct[]
       <>
         <Header checkHomeBtn={true} checkAboutBtn={false} />
         <main className="main">
-          <OpenFormButton onClick={this.handleModal} />
           <div className="main__wrapper">
             {mockData.map((el: IProduct) => (
               <Card
