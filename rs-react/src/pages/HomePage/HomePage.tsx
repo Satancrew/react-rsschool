@@ -4,8 +4,6 @@ import './HomePage.scss';
 import { IProduct } from '../../common/interface';
 import { Card } from '../../components/Card/Card';
 import { mockData } from '../../common/data';
-import { OpenFormButton } from '../../components/OpenFormButton/OpenFormButton';
-// import axios from 'axios';
 
 export class HomePage extends Component<{ isModal: boolean; products: IProduct[] }> {
   state = {
