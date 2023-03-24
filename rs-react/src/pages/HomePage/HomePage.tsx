@@ -29,6 +29,7 @@ export class HomePage extends Component<{ isModal: boolean; products: IProduct[]
                 image={el.image}
                 rating={el.rating}
                 category={el.category}
+                stock={el.stock}
               />
             ))}
           </div>

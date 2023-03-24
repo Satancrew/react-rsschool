@@ -4,7 +4,7 @@ import './Card.scss';
 
 export class Card extends Component<IProduct> {
   render() {
-    const { title, price, image, rating, category } = this.props;
+    const { title, price, image, rating, stock, category } = this.props;
     return (
       <div className="card">
         <img className="card__image" src={image} />
@@ -13,8 +13,8 @@ export class Card extends Component<IProduct> {
           <div className="card__details">
             <div className="card__category">Category: {category}</div>
             <div className="card__price">Price: {price}</div>
-            <div className="card__rating">Rating: {rating.rate}</div>
-            <div className="card__stock">Stock: {rating.count}</div>
+            <div className="card__rating">Rating: {rating}</div>
+            <div className="card__stock">Stock: {stock}</div>
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@ export class App extends Component {
       <Routes>
         <Route path="/" element={<HomePage isModal={false} products={[]} />} />
         <Route path="/about" element={<AboutUsPage />} />
-        <Route path="/form" element={<FormPage visible={false} />} />
+        <Route path="/form" element={<FormPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     );

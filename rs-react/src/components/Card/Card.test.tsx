@@ -17,11 +17,11 @@ describe('Card test', () => {
   });
 
   it('add component props', () => {
-    expect(card).toContainHTML(product.image);
+    expect(card).toContainHTML(product.image as string);
     expect(card).toContainHTML(product.title);
     expect(card).toContainHTML(product.category);
     expect(card).toContainHTML(product.price.toString());
-    expect(card).toContainHTML(product.rating.rate.toString());
-    expect(card).toContainHTML(product.rating.count.toString());
+    expect(card).toContainHTML(product.rating.toString());
+    expect(card).toContainHTML(product.stock.toString());
   });
 });

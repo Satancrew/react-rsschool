@@ -1,8 +1,8 @@
-import { ModalProps } from '../../common/interface';
+import { IProduct, ModalProps } from '../../common/interface';
 import React, { ChangeEvent, Component } from 'react';
 import './Form.scss';
 
-export class Form extends Component {
+export class Form extends Component<ModalProps> {
   productName: React.RefObject<HTMLInputElement>;
   productPrice: React.RefObject<HTMLInputElement>;
   productStock: React.RefObject<HTMLInputElement>;
@@ -20,19 +20,27 @@ export class Form extends Component {
     this.productImage = React.createRef();
     this.inputChecked = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {
-      visible: false,
-    };
   }
 
   handleSubmit(event: ChangeEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const image = this.productImage.current?.files?.[0];
+    const elem: IProduct = {
+      id: Math.floor(Math.random() * 5000),
+      title: this.productName.current?.value ?? '',
+      price: this.productPrice.current?.value ?? '0',
+      stock: this.productStock.current?.value ?? '0',
+      category: this.productCategory.current?.value ?? '',
+      image: (image && URL.createObjectURL(image)) ?? '',
+      rating: '5.1',
+    };
     console.log(this.productName.current?.value, '- name');
     console.log(this.productPrice.current?.value, '- price');
     console.log(this.productStock.current?.value, '- stock');
     console.log(this.productCategory.current?.value, '- category');
-    console.log(this.productImage.current?.checked, '- image');
+    console.log(this.productImage.current?.value, '- image');
     console.log(this.inputChecked.current?.checked, ' - checked');
-    event.preventDefault();
+    this.props.onAddProduct(elem);
   }
   render() {
     return (
@@ -93,7 +101,9 @@ export class Form extends Component {
               Check me if u want add product
             </label>
           </div>
-          <input className="submit" type="submit" value="Добавить" />
+          <button className="submit" type="submit" value="Добавить">
+            Add product
+          </button>
         </form>
       </div>
     );

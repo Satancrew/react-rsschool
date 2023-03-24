@@ -11,19 +11,19 @@ export class FormPage extends Component<ModalProps, { products: IProduct[] }> {
     this.state = {
       products: [],
     };
-    this.onAddCard = this.onAddCard.bind(this);
+    this.onAddProduct = this.onAddProduct.bind(this);
   }
 
-  onAddCard(card: IProduct) {
-    this.setState((prevState) => ({
-      products: [...prevState.products, card],
+  onAddProduct(el: IProduct) {
+    this.setState((prev) => ({
+      products: [...prev.products, el],
     }));
   }
   render() {
     return (
       <>
         <Header checkAboutBtn={false} checkHomeBtn={false} />
-        <Form />
+        <Form onAddProduct={this.onAddProduct} />
         <div className="form__list-items">
           {this.state.products?.map((el) => (
             <Card
@@ -33,6 +33,7 @@ export class FormPage extends Component<ModalProps, { products: IProduct[] }> {
               price={el.price}
               image={el.image}
               rating={el.rating}
+              stock={el.stock}
               category={el.category}
             />
           ))}

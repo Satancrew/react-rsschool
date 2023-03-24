@@ -1,15 +1,13 @@
 export interface IProduct {
   id: number;
   title: string;
-  price: number;
+  price: string;
   category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
+  image?: string;
+  rating: string;
+  stock: string;
 }
 
 export interface ModalProps {
-  visible: boolean;
+  onAddProduct?: (el: IProduct) => void;
 }
