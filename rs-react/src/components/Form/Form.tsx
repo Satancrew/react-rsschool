@@ -3,18 +3,22 @@ import React, { ChangeEvent, Component } from 'react';
 import './Form.scss';
 
 export class Form extends Component {
-  carName: React.RefObject<HTMLInputElement>;
-  carModel: React.RefObject<HTMLInputElement>;
-  carPrice: React.RefObject<HTMLInputElement>;
-  carProbeg: React.RefObject<HTMLInputElement>;
-  carChecked: React.RefObject<HTMLInputElement>;
+  productName: React.RefObject<HTMLInputElement>;
+  productPrice: React.RefObject<HTMLInputElement>;
+  productStock: React.RefObject<HTMLInputElement>;
+  productCategory: React.RefObject<HTMLSelectElement>;
+  productRating: React.RefObject<HTMLInputElement>;
+  productImage: React.RefObject<HTMLInputElement>;
+  inputChecked: React.RefObject<HTMLInputElement>;
   constructor(props: ModalProps) {
     super(props);
-    this.carName = React.createRef();
-    this.carModel = React.createRef();
-    this.carPrice = React.createRef();
-    this.carProbeg = React.createRef();
-    this.carChecked = React.createRef();
+    this.productName = React.createRef();
+    this.productPrice = React.createRef();
+    this.productStock = React.createRef();
+    this.productCategory = React.createRef();
+    this.productRating = React.createRef();
+    this.productImage = React.createRef();
+    this.inputChecked = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       visible: false,
@@ -22,11 +26,12 @@ export class Form extends Component {
   }
 
   handleSubmit(event: ChangeEvent<HTMLFormElement>) {
-    console.log(this.carName.current?.value, '- name');
-    console.log(this.carModel.current?.value, '- model');
-    console.log(this.carPrice.current?.value, '- price');
-    console.log(this.carProbeg.current?.value, '- probeg');
-    console.log(this.carChecked.current?.checked, '- checked');
+    console.log(this.productName.current?.value, '- name');
+    console.log(this.productPrice.current?.value, '- price');
+    console.log(this.productStock.current?.value, '- stock');
+    console.log(this.productCategory.current?.value, '- category');
+    console.log(this.productImage.current?.checked, '- image');
+    console.log(this.inputChecked.current?.checked, ' - checked');
     event.preventDefault();
   }
   render() {
@@ -35,40 +40,46 @@ export class Form extends Component {
         <form className="form" onSubmit={this.handleSubmit}>
           <div className="form__group">
             <label className="form__label">
-              Car name:
+              Product name:
               <br />
               <input
                 className="form__label-text"
                 type="text"
-                name="carName"
+                name="productName"
                 defaultValue=""
-                ref={this.carName}
+                ref={this.productName}
               />
             </label>
           </div>
           <div className="form__group">
             <label className="form__label">
-              Model:
+              Category:
               <br />
-              <input
-                className="form__label-text"
-                type="text"
-                name="carModel"
-                defaultValue=""
-                ref={this.carModel}
-              />
+              <select className="form__label-select" ref={this.productCategory}>
+                <option value="jewerly">jewerly</option>
+                <option value="electronic">electronic</option>
+                <option value="women shoes">women shoes</option>
+                <option value="man shoes">men shoes</option>
+              </select>
+            </label>
+          </div>
+          <div className="form__group">
+            <label className="form__label">
+              Take image
+              <br />
+              <input type="file" accept=".jpeg, .png, .jpg, .svg" ref={this.productImage} />
             </label>
           </div>
           <div className="form__group-numbers">
             <label className="form__label">
               Price:
               <br />
-              <input type="number" name="carPrice" defaultValue="0" ref={this.carPrice} />
+              <input type="number" name="productPrice" defaultValue="0" ref={this.productPrice} />
             </label>
             <label className="form__label">
-              Probeg:
+              Stock:
               <br />
-              <input type="number" name="carProbeg" defaultValue="0" ref={this.carProbeg} />
+              <input type="number" name="productStock" defaultValue="0" ref={this.productStock} />
             </label>
           </div>
           <div className="form__group-checkbox">
@@ -76,10 +87,10 @@ export class Form extends Component {
               <input
                 type="checkbox"
                 defaultChecked={false}
-                name="carChecked"
-                ref={this.carChecked}
+                name="inputChecked"
+                ref={this.inputChecked}
               />
-              Check me if u want add car to page
+              Check me if u want add product
             </label>
           </div>
           <input className="submit" type="submit" value="Добавить" />
