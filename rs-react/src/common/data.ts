@@ -12,15 +12,6 @@ export const testData: IProduct = {
 
 export const mockData: IProduct[] = [
   {
-    id: 1,
-    title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
-    price: '109.95',
-    category: "men's clothing",
-    image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-    rating: '4',
-    stock: '284,',
-  },
-  {
     id: 2,
     title: 'Mens Casual Premium Slim Fit T-Shirts ',
     price: '22.3',

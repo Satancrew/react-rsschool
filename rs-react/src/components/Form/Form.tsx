@@ -1,5 +1,6 @@
 import { IProduct, IForm } from '../../common/interface';
 import React, { ChangeEvent, Component } from 'react';
+import { validationProductName } from '../../common/validationRules';
 import './Form.scss';
 
 export class Form extends Component<IForm> {
@@ -21,6 +22,7 @@ export class Form extends Component<IForm> {
     this.inputChecked = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   formClearing(): void {
     this.productName.current!.value = '';
     this.productPrice.current!.value = '';
@@ -29,6 +31,12 @@ export class Form extends Component<IForm> {
     this.productImage.current!.value = '';
     this.inputChecked.current!.checked = false;
   }
+
+  validationInputs(): void {
+    const validateName = validationProductName(this.productName.current!.value || '');
+    console.log(validateName);
+  }
+
   handleSubmit(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
     const image = this.productImage.current?.files?.[0];
@@ -41,6 +49,7 @@ export class Form extends Component<IForm> {
       image: (image && URL.createObjectURL(image)) || '',
       rating: this.productRating.current?.value || '',
     };
+    this.validationInputs();
     this.formClearing();
     this.props.onAddProduct(elem);
   }
