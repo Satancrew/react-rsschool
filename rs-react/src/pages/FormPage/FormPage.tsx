@@ -23,7 +23,16 @@ export class FormPage extends Component<IModal, IProducts> {
     return (
       <>
         <Header checkAboutBtn={false} checkHomeBtn={false} />
-        <Form onAddProduct={this.onAddProduct} />
+        <Form
+          onAddProduct={this.onAddProduct}
+          validateName={false}
+          validatePrice={false}
+          validateStock={false}
+          validateCategory={false}
+          validateImage={false}
+          validateChecked={false}
+          errorMessage={false}
+        />
         <div className="form__list-items">
           {this.state.products?.map((el) => (
             <Card

@@ -18,4 +18,21 @@ export interface IModal {
 
 export interface IForm {
   onAddProduct: (ev: IProduct) => void;
+  validateName: boolean;
+  validatePrice: boolean;
+  validateStock: boolean;
+  validateCategory: boolean;
+  validateImage: boolean;
+  validateChecked: boolean;
+  errorMessage: boolean;
 }
+
+export type FormValidation = {
+  validateName: boolean;
+  validatePrice: boolean;
+  validateStock: boolean;
+  validateCategory: boolean;
+  validateImage: boolean;
+  validateChecked: boolean;
+  errorMessage: boolean;
+};

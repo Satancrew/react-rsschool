@@ -1,4 +1,4 @@
-import { IProduct, IForm } from '../../common/interface';
+import { IProduct, IForm, FormValidation } from '../../common/interface';
 import React, { ChangeEvent, Component } from 'react';
 import {
   validationProductCategoryImage,
@@ -7,7 +7,7 @@ import {
 } from '../../common/validationRules';
 import './Form.scss';
 
-export class Form extends Component<IForm> {
+export class Form extends Component<IForm, FormValidation> {
   productName: React.RefObject<HTMLInputElement>;
   productPrice: React.RefObject<HTMLInputElement>;
   productStock: React.RefObject<HTMLInputElement>;
@@ -24,6 +24,15 @@ export class Form extends Component<IForm> {
     this.productRating = React.createRef();
     this.productImage = React.createRef();
     this.inputChecked = React.createRef();
+    this.state = {
+      validateName: false,
+      validatePrice: false,
+      validateStock: false,
+      validateCategory: false,
+      validateImage: false,
+      validateChecked: false,
+      errorMessage: false,
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -45,6 +54,7 @@ export class Form extends Component<IForm> {
     );
     const validateImage = validationProductCategoryImage(this.productImage.current!.value || '');
     const validateChecked = this.inputChecked.current!.checked;
+
     return (
       validateName &&
       validatePrice &&
@@ -67,11 +77,16 @@ export class Form extends Component<IForm> {
       image: (image && URL.createObjectURL(image)) || '',
       rating: this.productRating.current?.value || '',
     };
-    if (!this.validationInputs()) return;
+
+    if (!this.validationInputs()) {
+      this.setState({ errorMessage: true });
+      return;
+    }
     this.formClearing();
     this.props.onAddProduct(elem);
   }
   render() {
+    console.log(this.state.validateName);
     return (
       <div className="modal">
         <form className="form" onSubmit={this.handleSubmit}>
@@ -86,6 +101,9 @@ export class Form extends Component<IForm> {
                 defaultValue=""
                 ref={this.productName}
               />
+              {!this.state.validateName && this.state.errorMessage && (
+                <p className="form__error">Product name must contain more than three letters</p>
+              )}
             </label>
           </div>
           <div className="form__group">
@@ -93,13 +111,17 @@ export class Form extends Component<IForm> {
               Category:
               <br />
               <select className="form__label-select" ref={this.productCategory}>
+                <option value=""></option>
                 <option value="jewerly">jewerly</option>
                 <option value="electronic">electronics</option>
                 <option value="women shoes">women shoes</option>
                 <option value="man shoes">men shoes</option>
-                <option value="man shoes">accessory</option>
-                <option value="man shoes">other</option>
+                <option value="accessory">accessory</option>
+                <option value="other">other</option>
               </select>
+              {!this.state.validateCategory && this.state.errorMessage && (
+                <p className="form__error">Pick any category</p>
+              )}
             </label>
           </div>
           <div className="form__group">
@@ -107,6 +129,9 @@ export class Form extends Component<IForm> {
               Take image
               <br />
               <input type="file" accept=".jpeg, .png, .jpg, .svg, .pdf" ref={this.productImage} />
+              {!this.state.validateImage && this.state.errorMessage && (
+                <p className="form__error">Choose any picture</p>
+              )}
             </label>
           </div>
           <div className="form__group-numbers">
@@ -120,6 +145,12 @@ export class Form extends Component<IForm> {
               <br />
               <input type="number" name="productStock" defaultValue="" ref={this.productStock} />
             </label>
+            {!this.state.validatePrice && this.state.errorMessage && (
+              <p className="form__error">Price</p>
+            )}
+            {!this.state.validateStock && this.state.errorMessage && (
+              <p className="form__error">Stock</p>
+            )}
           </div>
           <div className="form__group-checkbox">
             <label className="form__label-checkbox">
@@ -131,6 +162,9 @@ export class Form extends Component<IForm> {
               />
               Check me if u want add product
             </label>
+            {!this.state.validateChecked && this.state.errorMessage && (
+              <p className="form__error">Rules</p>
+            )}
           </div>
           <button className="submit" type="submit" value="Добавить">
             Add product

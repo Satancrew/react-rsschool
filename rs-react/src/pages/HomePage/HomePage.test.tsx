@@ -5,7 +5,7 @@ import { HomePage } from './HomePage';
 
 describe('HomePage', () => {
   it('should have headline', () => {
-    render(<HomePage isModal={false} products={[]} />, { wrapper: BrowserRouter });
+    render(<HomePage products={[]} />, { wrapper: BrowserRouter });
     expect(screen.getByText(/Home/i)).toBeInTheDocument;
   });
 });

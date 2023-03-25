@@ -17,6 +17,12 @@
     align-items: center;
     gap: 10px;
 
+    &__error {
+      color: red;
+      font-size: 0.8rem;
+      font-style: italic;
+    }
+
     &__group {
       position: relative;
       margin-top: 10px;

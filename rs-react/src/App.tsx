@@ -10,7 +10,7 @@ export class App extends Component {
   render() {
     return (
       <Routes>
-        <Route path="/" element={<HomePage isModal={false} products={[]} />} />
+        <Route path="/" element={<HomePage products={[]} />} />
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/form" element={<FormPage />} />
         <Route path="*" element={<ErrorPage />} />
