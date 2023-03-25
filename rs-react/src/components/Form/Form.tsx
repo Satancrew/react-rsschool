@@ -1,6 +1,10 @@
 import { IProduct, IForm } from '../../common/interface';
 import React, { ChangeEvent, Component } from 'react';
-import { validationProductCategory, validationProductName, validationProductNumbers } from '../../common/validationRules';
+import {
+  validationProductCategoryImage,
+  validationProductName,
+  validationProductPriceStock,
+} from '../../common/validationRules';
 import './Form.scss';
 
 export class Form extends Component<IForm> {
@@ -32,12 +36,23 @@ export class Form extends Component<IForm> {
     this.inputChecked.current!.checked = false;
   }
 
-  validationInputs(): void {
+  validationInputs(): boolean {
     const validateName = validationProductName(this.productName.current!.value || '');
-    const validatePrice = validationProductNumbers(this.productPrice.current!.value || '');
-    const validateStock = validationProductNumbers(this.productStock.current!.value || '');
-    const validateCategory = validationProductCategory(this.productCategory.current!.value || '');
-    console.log(validatePrice);
+    const validatePrice = validationProductPriceStock(this.productPrice.current!.value || '');
+    const validateStock = validationProductPriceStock(this.productStock.current!.value || '');
+    const validateCategory = validationProductCategoryImage(
+      this.productCategory.current!.value || ''
+    );
+    const validateImage = validationProductCategoryImage(this.productImage.current!.value || '');
+    const validateChecked = this.inputChecked.current!.checked;
+    return (
+      validateName &&
+      validatePrice &&
+      validateStock &&
+      validateCategory &&
+      validateImage &&
+      validateChecked
+    );
   }
 
   handleSubmit(event: ChangeEvent<HTMLFormElement>) {
@@ -52,7 +67,7 @@ export class Form extends Component<IForm> {
       image: (image && URL.createObjectURL(image)) || '',
       rating: this.productRating.current?.value || '',
     };
-    this.validationInputs();
+    if (!this.validationInputs()) return;
     this.formClearing();
     this.props.onAddProduct(elem);
   }
