@@ -21,7 +21,14 @@ export class Form extends Component<IForm> {
     this.inputChecked = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  formCleaing(): void {
+    this.productName.current!.value = '';
+    this.productPrice.current!.value = '';
+    this.productStock.current!.value = '';
+    this.productCategory.current!.value = '';
+    this.productImage.current!.value = '';
+    this.inputChecked.current!.checked = false;
+  }
   handleSubmit(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
     const image = this.productImage.current?.files?.[0];
@@ -34,6 +41,7 @@ export class Form extends Component<IForm> {
       image: (image && URL.createObjectURL(image)) || '',
       rating: this.productRating.current?.value || '',
     };
+    this.formCleaing();
     this.props.onAddProduct(elem);
   }
   render() {
@@ -76,12 +84,12 @@ export class Form extends Component<IForm> {
             <label className="form__label">
               Price:
               <br />
-              <input type="number" name="productPrice" defaultValue="0" ref={this.productPrice} />
+              <input type="number" name="productPrice" defaultValue="" ref={this.productPrice} />
             </label>
             <label className="form__label">
               Stock:
               <br />
-              <input type="number" name="productStock" defaultValue="0" ref={this.productStock} />
+              <input type="number" name="productStock" defaultValue="" ref={this.productStock} />
             </label>
           </div>
           <div className="form__group-checkbox">
