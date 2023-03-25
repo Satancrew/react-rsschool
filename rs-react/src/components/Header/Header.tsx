@@ -13,17 +13,15 @@ export class Header extends Component<{ checkHomeBtn: boolean; checkAboutBtn: bo
     return (
       <header className="header">
         <div className="header__links">
-          <>
-            <Link className={homePageBtnStyles} to="/">
-              Home page
-            </Link>
-            <Link className={aboutPageBtnStyles} to="/about">
-              About us
-            </Link>
-            <Link className={formPageBtnStyles} to="/form">
-              Form Page
-            </Link>
-          </>
+          <Link className={homePageBtnStyles} to="/">
+            Home page
+          </Link>
+          <Link className={aboutPageBtnStyles} to="/about">
+            About us
+          </Link>
+          <Link className={formPageBtnStyles} to="/form">
+            Form Page
+          </Link>
         </div>
         <Search />
       </header>

@@ -1,12 +1,12 @@
-import { IProduct, ModalProps } from '../../common/interface';
+import { IProduct, IProducts, IModal } from '../../common/interface';
 import React, { Component } from 'react';
 import { Header } from '../../components/Header/Header';
 import { Form } from '../../components/Form/Form';
 import { Card } from '../../components/Card/Card';
 import './FormPage.scss';
 
-export class FormPage extends Component<ModalProps, { products: IProduct[] }> {
-  constructor(props: ModalProps) {
+export class FormPage extends Component<IModal, IProducts> {
+  constructor(props: IModal) {
     super(props);
     this.state = {
       products: [],

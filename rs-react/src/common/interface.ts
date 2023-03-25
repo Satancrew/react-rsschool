@@ -8,6 +8,14 @@ export interface IProduct {
   stock: string;
 }
 
-export interface ModalProps {
-  onAddProduct?: (el: IProduct) => void;
+export interface IProducts {
+  products: IProduct[];
+}
+
+export interface IModal {
+  [props: string]: never;
+}
+
+export interface IForm {
+  onAddProduct: (ev: IProduct) => void;
 }

@@ -1,8 +1,8 @@
-import { IProduct, ModalProps } from '../../common/interface';
+import { IProduct, IForm } from '../../common/interface';
 import React, { ChangeEvent, Component } from 'react';
 import './Form.scss';
 
-export class Form extends Component<ModalProps> {
+export class Form extends Component<IForm> {
   productName: React.RefObject<HTMLInputElement>;
   productPrice: React.RefObject<HTMLInputElement>;
   productStock: React.RefObject<HTMLInputElement>;
@@ -10,7 +10,7 @@ export class Form extends Component<ModalProps> {
   productRating: React.RefObject<HTMLInputElement>;
   productImage: React.RefObject<HTMLInputElement>;
   inputChecked: React.RefObject<HTMLInputElement>;
-  constructor(props: ModalProps) {
+  constructor(props: IForm) {
     super(props);
     this.productName = React.createRef();
     this.productPrice = React.createRef();
@@ -26,7 +26,7 @@ export class Form extends Component<ModalProps> {
     event.preventDefault();
     const image = this.productImage.current?.files?.[0];
     const elem: IProduct = {
-      id: Math.floor(Math.random() * 5000),
+      id: Math.floor(Math.random() * 50000),
       title: this.productName.current?.value ?? '',
       price: this.productPrice.current?.value ?? '0',
       stock: this.productStock.current?.value ?? '0',
