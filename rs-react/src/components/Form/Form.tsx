@@ -94,9 +94,11 @@ export class Form extends Component<IForm> {
               <br />
               <select className="form__label-select" ref={this.productCategory}>
                 <option value="jewerly">jewerly</option>
-                <option value="electronic">electronic</option>
+                <option value="electronic">electronics</option>
                 <option value="women shoes">women shoes</option>
                 <option value="man shoes">men shoes</option>
+                <option value="man shoes">accessory</option>
+                <option value="man shoes">other</option>
               </select>
             </label>
           </div>
@@ -104,7 +106,7 @@ export class Form extends Component<IForm> {
             <label className="form__label">
               Take image
               <br />
-              <input type="file" accept=".jpeg, .png, .jpg, .svg" ref={this.productImage} />
+              <input type="file" accept=".jpeg, .png, .jpg, .svg, .pdf" ref={this.productImage} />
             </label>
           </div>
           <div className="form__group-numbers">

@@ -4,14 +4,10 @@
   right: 0;
   margin-right: 5%;
 
-  @media screen and (max-width: 1050px) {
+  @media screen and (max-width: 1110px) {
+    width: 300px;
     margin: 0;
     position: relative;
-    width: 500px;
-  }
-
-  @media screen and (max-width: 1050px) {
-    width: 300px;
   }
 
   &__wrapper {
