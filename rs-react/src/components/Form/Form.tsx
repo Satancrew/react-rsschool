@@ -21,7 +21,7 @@ export class Form extends Component<IForm> {
     this.inputChecked = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  formCleaing(): void {
+  formClearing(): void {
     this.productName.current!.value = '';
     this.productPrice.current!.value = '';
     this.productStock.current!.value = '';
@@ -41,7 +41,7 @@ export class Form extends Component<IForm> {
       image: (image && URL.createObjectURL(image)) || '',
       rating: this.productRating.current?.value || '',
     };
-    this.formCleaing();
+    this.formClearing();
     this.props.onAddProduct(elem);
   }
   render() {
