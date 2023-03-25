@@ -27,19 +27,13 @@ export class Form extends Component<IForm> {
     const image = this.productImage.current?.files?.[0];
     const elem: IProduct = {
       id: Math.floor(Math.random() * 50000),
-      title: this.productName.current?.value ?? '',
-      price: this.productPrice.current?.value ?? '0',
-      stock: this.productStock.current?.value ?? '0',
-      category: this.productCategory.current?.value ?? '',
-      image: (image && URL.createObjectURL(image)) ?? '',
-      rating: '5.1',
+      title: this.productName.current?.value || '',
+      price: this.productPrice.current?.value || '0',
+      stock: this.productStock.current?.value || '0',
+      category: this.productCategory.current?.value || '',
+      image: (image && URL.createObjectURL(image)) || '',
+      rating: this.productRating.current?.value || '',
     };
-    console.log(this.productName.current?.value, '- name');
-    console.log(this.productPrice.current?.value, '- price');
-    console.log(this.productStock.current?.value, '- stock');
-    console.log(this.productCategory.current?.value, '- category');
-    console.log(this.productImage.current?.value, '- image');
-    console.log(this.inputChecked.current?.checked, ' - checked');
     this.props.onAddProduct(elem);
   }
   render() {
