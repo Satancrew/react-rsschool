@@ -1,6 +1,6 @@
 import { IProduct, IForm } from '../../common/interface';
 import React, { ChangeEvent, Component } from 'react';
-import { validationProductName } from '../../common/validationRules';
+import { validationProductCategory, validationProductName, validationProductNumbers } from '../../common/validationRules';
 import './Form.scss';
 
 export class Form extends Component<IForm> {
@@ -34,7 +34,10 @@ export class Form extends Component<IForm> {
 
   validationInputs(): void {
     const validateName = validationProductName(this.productName.current!.value || '');
-    console.log(validateName);
+    const validatePrice = validationProductNumbers(this.productPrice.current!.value || '');
+    const validateStock = validationProductNumbers(this.productStock.current!.value || '');
+    const validateCategory = validationProductCategory(this.productCategory.current!.value || '');
+    console.log(validatePrice);
   }
 
   handleSubmit(event: ChangeEvent<HTMLFormElement>) {

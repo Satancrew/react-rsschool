@@ -1,4 +1,11 @@
 export const validationProductName = (prodName: string) => {
-  if (prodName.length < 3) return false;
-  return true;
+  return prodName.length < 3 ? false : true;
+};
+
+export const validationProductNumbers = (prodNumbers: string) => {
+  return prodNumbers.length < 1 ? false : true;
+};
+
+export const validationProductCategory = (prodCategory: string) => {
+  return prodCategory.length === 0 ? false : true;
 };
