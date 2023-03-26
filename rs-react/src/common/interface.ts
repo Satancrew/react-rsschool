@@ -35,4 +35,5 @@ export type FormValidation = {
   validateImage: boolean;
   validateChecked: boolean;
   errorMessage: boolean;
+  prodId: number;
 };

@@ -32,6 +32,7 @@ export class Form extends Component<IForm, FormValidation> {
       validateImage: false,
       validateChecked: false,
       errorMessage: false,
+      prodId: 0,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -71,12 +72,16 @@ export class Form extends Component<IForm, FormValidation> {
       validateChecked
     );
   }
-
+  incrementProdId() {
+    this.setState((state) => {
+      return { prodId: state.prodId + 1 };
+    });
+  }
   handleSubmit(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
     const image = this.productImage.current?.files?.[0];
     const elem: IProduct = {
-      id: Math.floor(Math.random() * 50000),
+      id: this.state.prodId,
       title: this.productName.current?.value || '',
       price: this.productPrice.current?.value || '0',
       stock: this.productStock.current?.value || '0',
@@ -90,10 +95,10 @@ export class Form extends Component<IForm, FormValidation> {
       return;
     }
     this.formClearing();
+    this.incrementProdId();
     this.props.onAddProduct(elem);
   }
   render() {
-    console.log(this.state.validateName);
     return (
       <div className="modal">
         <form className="form" onSubmit={this.handleSubmit}>
