@@ -54,7 +54,14 @@ export class Form extends Component<IForm, FormValidation> {
     );
     const validateImage = validationProductCategoryImage(this.productImage.current!.value || '');
     const validateChecked = this.inputChecked.current!.checked;
-
+    this.setState({
+      validateName: validateName,
+      validatePrice: validatePrice,
+      validateStock: validateStock,
+      validateCategory: validateCategory,
+      validateImage: validateImage,
+      validateChecked: validateChecked,
+    });
     return (
       validateName &&
       validatePrice &&
@@ -135,21 +142,24 @@ export class Form extends Component<IForm, FormValidation> {
             </label>
           </div>
           <div className="form__group-numbers">
-            <label className="form__label">
+            <label className="form__label form__label-price">
               Price:
               <br />
               <input type="number" name="productPrice" defaultValue="" ref={this.productPrice} />
             </label>
-            <label className="form__label">
+            <label className="form__label form__label-stock">
               Stock:
               <br />
               <input type="number" name="productStock" defaultValue="" ref={this.productStock} />
             </label>
+            <br />
+          </div>
+          <div className="form__error-price-stock">
             {!this.state.validatePrice && this.state.errorMessage && (
-              <p className="form__error">Price</p>
+              <p className="form__error form__error-small">Enter the number</p>
             )}
             {!this.state.validateStock && this.state.errorMessage && (
-              <p className="form__error">Stock</p>
+              <p className="form__error form__error-small">Enter the number</p>
             )}
           </div>
           <div className="form__group-checkbox">
@@ -163,7 +173,7 @@ export class Form extends Component<IForm, FormValidation> {
               Check me if u want add product
             </label>
             {!this.state.validateChecked && this.state.errorMessage && (
-              <p className="form__error">Rules</p>
+              <p className="form__error">Accept the rules to continue</p>
             )}
           </div>
           <button className="submit" type="submit" value="Добавить">

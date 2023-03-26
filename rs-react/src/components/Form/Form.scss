@@ -21,6 +21,16 @@
       color: red;
       font-size: 0.8rem;
       font-style: italic;
+
+      &-small {
+        font-size: 0.65rem;
+      }
+
+      &-price-stock {
+        display: flex;
+        width: 70%;
+        justify-content: space-between;
+      }
     }
 
     &__group {
@@ -53,6 +63,10 @@
 
         .form__label {
           width: 35%;
+
+          &-stock {
+            margin-left: auto;
+          }
         }
       }
 
