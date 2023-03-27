@@ -37,3 +37,8 @@ export type FormValidation = {
   errorMessage: boolean;
   prodId: number;
 };
+
+export type HeaderProps = {
+  checkHomeBtn: boolean;
+  checkAboutBtn: boolean;
+};
