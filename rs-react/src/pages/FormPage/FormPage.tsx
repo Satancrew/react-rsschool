@@ -1,44 +1,36 @@
-import { IProduct, IProducts, IModal } from '../../common/interface';
-import React, { Component } from 'react';
+import { IProduct } from '../../common/interface';
+import React, { useState } from 'react';
 import { Header } from '../../components/Header/Header';
 import { Form } from '../../components/Form/Form';
 import { Card } from '../../components/Card/Card';
 import './FormPage.scss';
 
-export class FormPage extends Component<IModal, IProducts> {
-  constructor(props: IModal) {
-    super(props);
-    this.state = {
-      products: [],
-    };
-    this.onAddProduct = this.onAddProduct.bind(this);
-  }
+export const FormPage = () => {
+  const [products, setProducts] = useState<IProduct[]>([]);
 
-  onAddProduct(el: IProduct) {
-    this.setState((prev) => ({
-      products: [...prev.products, el],
-    }));
-  }
-  render() {
-    return (
-      <>
-        <Header checkAboutBtn={false} checkHomeBtn={false} />
-        <Form onAddProduct={this.onAddProduct} />
-        <div className="form__list-items">
-          {this.state.products?.map((el) => (
-            <Card
-              key={el.id}
-              id={el.id}
-              title={el.title}
-              price={el.price}
-              image={el.image}
-              rating={el.rating}
-              stock={el.stock}
-              category={el.category}
-            />
-          ))}
-        </div>
-      </>
-    );
-  }
-}
+  const onAddProduct = (el: IProduct) => {
+    const prodsArr = [...products, el];
+    setProducts(prodsArr);
+  };
+
+  return (
+    <>
+      <Header checkAboutBtn={false} checkHomeBtn={false} />
+      <Form onAddProduct={onAddProduct} />
+      <div className="form__list-items">
+        {products.map((el: IProduct) => (
+          <Card
+            key={el.id}
+            id={el.id}
+            title={el.title}
+            price={el.price}
+            image={el.image}
+            rating={el.rating}
+            stock={el.stock}
+            category={el.category}
+          />
+        ))}
+      </div>
+    </>
+  );
+};
