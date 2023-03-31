@@ -6,6 +6,7 @@ export interface IProduct {
   image?: string;
   rating: string;
   stock: string;
+  rules?: boolean;
 }
 
 export interface IProducts {
@@ -34,4 +35,15 @@ export type FormValidation = {
 export type HeaderProps = {
   checkHomeBtn: boolean;
   checkAboutBtn: boolean;
+};
+
+export type InputTypes = {
+  title: string;
+  price: string;
+  stock: string;
+  category: string;
+  image: FileList;
+  rating: string;
+  rules: boolean;
+  errorMessage: string;
 };
