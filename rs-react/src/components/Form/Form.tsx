@@ -20,7 +20,7 @@ export const Form = (props: IForm) => {
 
   const onAdded = (prod: InputTypes) => {
     const image = URL.createObjectURL(prod.image[0]);
-    const elem: IProduct = {
+    const card: IProduct = {
       id: prodId,
       title: prod.title,
       price: prod.price,
@@ -30,7 +30,7 @@ export const Form = (props: IForm) => {
       rating: prod.rating,
       rules: prod.rules,
     };
-    onAddProduct(elem);
+    onAddProduct(card);
     reset();
     setProdId(prodId + 1);
   };
