@@ -7,7 +7,8 @@ export const Search = () => {
   useEffect(() => {
     const term = localStorage.getItem('value');
     if (term || term === '') setTerm(term);
-  }, []);
+    return localStorage.setItem('value', term || '');
+  }, [term]);
 
   const onSearchChange = (ev: ChangeEvent<HTMLInputElement>) => {
     const term = ev.target.value;
