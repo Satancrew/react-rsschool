@@ -1,4 +1,4 @@
-import { IProduct } from 'common/interface';
+import { IProduct } from '@/common/interface';
 import React from 'react';
 import './Card.scss';
 

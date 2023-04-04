@@ -1,8 +1,8 @@
 import React from 'react';
-import { Header } from '../../components/Header/Header';
-import { IProduct } from '../../common/interface';
-import { Card } from '../../components/Card/Card';
-import { mockData } from '../../common/data';
+import Header from '@/components/Header/Header';
+import { IProduct } from '@/common/interface';
+import { Card } from '@/components/Card/Card';
+import { mockData } from '@/common/data';
 import './HomePage.scss';
 
 export const HomePage = () => {

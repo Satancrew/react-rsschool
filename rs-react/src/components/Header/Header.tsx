@@ -1,10 +1,10 @@
 import { Search } from '../Search/Search';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { HeaderProps } from '../../common/interface';
+import { HeaderProps } from '@/common/interface';
 import './Header.scss';
 
-export const Header = (props: HeaderProps) => {
+const Header = (props: HeaderProps) => {
   const { checkHomeBtn, checkAboutBtn } = props;
   const homePageBtnStyles = checkHomeBtn ? 'header__btn active' : 'header__btn';
   const aboutPageBtnStyles = checkAboutBtn ? 'header__btn active' : 'header__btn';
@@ -26,3 +26,5 @@ export const Header = (props: HeaderProps) => {
     </header>
   );
 };
+
+export default Header;

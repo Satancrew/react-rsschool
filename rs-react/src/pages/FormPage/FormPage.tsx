@@ -1,8 +1,8 @@
-import { IProduct } from '../../common/interface';
+import { IProduct } from '@/common/interface';
 import React, { useState } from 'react';
-import { Header } from '../../components/Header/Header';
-import { Form } from '../../components/Form/Form';
-import { Card } from '../../components/Card/Card';
+import Header from '@/components/Header/Header';
+import { Form } from '@/components/Form/Form';
+import { Card } from '@/components/Card/Card';
 import './FormPage.scss';
 
 export const FormPage = () => {

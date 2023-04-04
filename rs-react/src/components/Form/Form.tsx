@@ -1,10 +1,10 @@
-import { IProduct, IForm, InputTypes } from '../../common/interface';
+import { IProduct, IForm, InputTypes } from '@/common/interface';
 import React, { useState } from 'react';
 import {
   validationProductCategoryImage,
   validationProductName,
   validationProductPriceStock,
-} from '../../common/validationRules';
+} from '@/common/validationRules';
 import { useForm } from 'react-hook-form';
 import './Form.scss';
 
