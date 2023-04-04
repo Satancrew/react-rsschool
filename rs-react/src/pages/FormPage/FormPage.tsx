@@ -19,16 +19,7 @@ export const FormPage = () => {
       <Form onAddProduct={onAddProduct} />
       <div className="form__list-items">
         {products.map((el: IProduct) => (
-          <Card
-            key={el.id}
-            id={el.id}
-            title={el.title}
-            price={el.price}
-            image={el.image}
-            rating={el.rating}
-            stock={el.stock}
-            category={el.category}
-          />
+          <Card key={el.id} {...el} />
         ))}
       </div>
     </>

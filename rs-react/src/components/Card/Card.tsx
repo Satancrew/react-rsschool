@@ -2,8 +2,7 @@ import { IProduct } from 'common/interface';
 import React from 'react';
 import './Card.scss';
 
-export const Card = (props: IProduct) => {
-  const { title, price, image, rating, stock, category } = props;
+export const Card = ({ title, price, image, rating, stock, category }: IProduct) => {
   return (
     <div className="card">
       <img className="card__image" src={image} />
