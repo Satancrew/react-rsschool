@@ -36,3 +36,11 @@ export type InputTypes = {
   rules: boolean;
   errorMessage: string;
 };
+
+export type Character = {
+  id: number;
+  name: string;
+  gender: string;
+  image: string;
+  status: string;
+};

@@ -1,4 +1,3 @@
-import { Search } from '../Search/Search';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { HeaderProps } from '@/common/interface';
@@ -22,7 +21,6 @@ const Header = (props: HeaderProps) => {
           Form Page
         </Link>
       </div>
-      {/* <Search /> */}
     </header>
   );
 };
