@@ -1,13 +1,11 @@
 .search {
-  width: 300px;
-  position: absolute;
-  right: 0;
-  margin-right: 5%;
+  width: 500px;
+  margin: 2% auto;
+  border: 1px solid grey;
+  border-radius: 10px;
 
   @media screen and (max-width: 1110px) {
     width: 300px;
-    margin: 0;
-    position: relative;
   }
 
   &__wrapper {

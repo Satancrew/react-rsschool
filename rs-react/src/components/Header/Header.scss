@@ -19,6 +19,11 @@
   &__links {
     display: flex;
 
+    @media screen and (max-width: 500px) {
+      flex-direction: column;
+      gap: 10px;
+    }
+
     .active {
       color: white;
     }

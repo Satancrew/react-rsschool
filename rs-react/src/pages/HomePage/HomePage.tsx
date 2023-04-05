@@ -4,11 +4,13 @@ import { IProduct } from '@/common/interface';
 import { Card } from '@/components/Card/Card';
 import { mockData } from '@/common/data';
 import './HomePage.scss';
+import { Search } from '@/components/Search/Search';
 
 export const HomePage = () => {
   return (
     <>
       <Header checkHomeBtn={true} checkAboutBtn={false} />
+      <Search />
       <main className="main">
         <div className="main__wrapper">
           {mockData.map((el: IProduct) => (

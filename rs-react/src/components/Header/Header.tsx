@@ -22,7 +22,7 @@ const Header = (props: HeaderProps) => {
           Form Page
         </Link>
       </div>
-      <Search />
+      {/* <Search /> */}
     </header>
   );
 };
