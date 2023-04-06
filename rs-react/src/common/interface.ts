@@ -50,7 +50,7 @@ export type Character = {
   name: string;
   gender: string;
   image: string;
-  status: string;
+  status?: string;
   species?: string;
   type?: string;
 };

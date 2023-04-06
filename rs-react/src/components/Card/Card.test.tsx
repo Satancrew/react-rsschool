@@ -20,5 +20,6 @@ describe('Card test', () => {
     expect(card).toContainHTML(product.image as string);
     expect(card).toContainHTML(product.name);
     expect(card).toContainHTML(product.gender);
+    expect(card).toContainHTML(product.image);
   });
 });
