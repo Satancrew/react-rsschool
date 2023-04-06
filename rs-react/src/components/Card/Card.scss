@@ -1,18 +1,7 @@
 .card {
-  box-shadow: 1px 1px 1px -1px black;
   cursor: pointer;
   overflow: hidden;
   transition: 0.2s ease-in-out;
-
-  &__wrapper {
-    padding: 2%;
-    background-color: #d0f8ef;
-    border-radius: 0px 0px 20px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 180px;
-  }
 
   &__image {
     background-size: contain;
@@ -21,7 +10,13 @@
   }
 
   &:hover {
-    box-shadow: 2px 2px 13px #a2a6b0;
+    box-shadow: 2px 2px 13px #323935;
     transform: scale(102%);
+  }
+
+  &__data {
+    text-align: left;
+    font-size: 1.1rem;
+    line-height: 30px;
   }
 }

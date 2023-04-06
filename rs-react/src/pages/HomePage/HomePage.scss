@@ -1,13 +1,13 @@
 .main {
   width: 100%;
-  background: #62c4ad;
   &__wrapper {
-    width: 90%;
-    margin: 2% auto;
+    width: 80%;
+    margin: 0 auto;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 35px;
+    margin-bottom: 30px;
   }
 }

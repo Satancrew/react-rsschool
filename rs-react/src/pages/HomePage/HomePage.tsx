@@ -7,20 +7,32 @@ import { Search } from '@/components/Search/Search';
 import axios from 'axios';
 
 export const HomePage = () => {
-  const [character, setCharacter] = useState<Character[]>([]);
+  const [characters, setCharacters] = useState<Character[]>([]);
+  const [term, setTerm] = useState(localStorage.getItem('value') || '');
+  const [response, setResponse] = useState(
+    'https://rickandmortyapi.com/api/character' + `/?name=${term}`
+  );
+  const [modalWindow, setModalWindow] = useState(false);
+
   useEffect(() => {
     axios.get('https://rickandmortyapi.com/api/character').then((res) => {
-      console.log(res);
-      setCharacter(res.data.results);
+      setCharacters(res.data.results);
     });
   }, []);
+
   return (
     <>
       <Header checkHomeBtn={true} checkAboutBtn={false} />
       <main className="main">
-        <Search />
+        <Search
+          term={term}
+          setTerm={setTerm}
+          setCharactersArr={setCharacters}
+          response={response}
+          setResponse={setResponse}
+        />
         <div className="main__wrapper">
-          {character.map((el: Character) => (
+          {characters.map((el: Character) => (
             <Card key={el.id} {...el} />
           ))}
         </div>

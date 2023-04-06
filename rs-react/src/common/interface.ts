@@ -17,6 +17,14 @@ export interface IModal {
   [props: string]: never;
 }
 
+export interface ISearch {
+  term: string;
+  setTerm: (term: string) => void;
+  response: string;
+  setResponse: (response: string) => void;
+  setCharactersArr: React.Dispatch<React.SetStateAction<Character[]>>;
+}
+
 export interface IForm {
   onAddProduct: (ev: IProduct) => void;
 }
@@ -43,4 +51,6 @@ export type Character = {
   gender: string;
   image: string;
   status: string;
+  species?: string;
+  type?: string;
 };
