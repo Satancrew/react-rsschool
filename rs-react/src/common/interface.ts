@@ -46,12 +46,21 @@ export type InputTypes = {
 };
 
 export type Character = {
-  id: number;
+  id?: number;
   name: string;
   gender: string;
   image: string;
   status?: string;
   species?: string;
   type?: string;
+  location?: {
+    name: string;
+    url: string;
+  };
   showModal?: React.Dispatch<React.SetStateAction<boolean>>;
+  getCharacter?: React.Dispatch<React.SetStateAction<Character>>;
+};
+
+export type ModalCard = {
+  character: Character;
 };

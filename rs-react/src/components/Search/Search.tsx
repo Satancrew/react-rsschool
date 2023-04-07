@@ -1,11 +1,9 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent } from 'react';
 import { ISearch } from '@/common/interface';
 import './Search.scss';
 import axios from 'axios';
 
 export const Search = ({ term, setTerm, response, setResponse, setCharactersArr }: ISearch) => {
-  const [noFoundError, setNoFoundError] = useState(false);
-
   const onSearchChange = (ev: ChangeEvent<HTMLInputElement>) => {
     const term = ev.target.value;
     localStorage.setItem('value', term);

@@ -2,12 +2,12 @@ import React, { ReactNode } from 'react';
 import './ModalWindow.scss';
 
 type ModalWindow = {
-  content: ReactNode;
+  children: ReactNode;
   modalWindowVisible: boolean;
   setModalWindowVisible: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const ModalWindow = ({ content, modalWindowVisible, setModalWindowVisible }: ModalWindow) => {
+const ModalWindow = ({ children, modalWindowVisible, setModalWindowVisible }: ModalWindow) => {
   const modalStyles = modalWindowVisible ? 'modal__active' : '';
   return (
     <div
@@ -17,15 +17,14 @@ const ModalWindow = ({ content, modalWindowVisible, setModalWindowVisible }: Mod
         setModalWindowVisible(false);
       }}
     >
-      <div className="modal__content" onClick={(e) => e.stopPropagation()}>
-        <div
+      <div className="modal__container" onClick={(e) => e.stopPropagation()}>
+        <i
+          className="bx bx-error bx-md modal__close"
           onClick={() => {
             setModalWindowVisible(false);
           }}
-        >
-          <i className="bx bx-error bx-md modal__close"></i>
-        </div>
-        {content}
+        ></i>
+        {children}
       </div>
     </div>
   );

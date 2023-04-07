@@ -5,10 +5,12 @@ import { Card } from '@/components/Card/Card';
 import { Search } from '@/components/Search/Search';
 import axios from 'axios';
 import ModalWindow from '@/components/ModalWindow/ModalWindow';
+import ModalCard from '@/components/ModalCard/ModalCard';
 import './HomePage.scss';
 
 export const HomePage = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
+  const [character, setCharacter] = useState<Character>({} as Character);
   const [term, setTerm] = useState(localStorage.getItem('value') || '');
   const [response, setResponse] = useState(
     'https://rickandmortyapi.com/api/character' + `/?name=${term}`
@@ -36,11 +38,16 @@ export const HomePage = () => {
           modalWindowVisible={modalWindowVisible}
           setModalWindowVisible={setModalWindowVisible}
         >
-          <div>modal window</div>
+          <ModalCard character={character} />
         </ModalWindow>
         <div className="main__wrapper">
           {characters.map((el: Character) => (
-            <Card key={el.id} {...el} showModal={setModalWindowVisible} />
+            <Card
+              key={el.id}
+              {...el}
+              showModal={setModalWindowVisible}
+              getCharacter={setCharacter}
+            />
           ))}
         </div>
       </main>
