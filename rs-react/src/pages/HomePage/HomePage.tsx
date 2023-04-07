@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header/Header';
 import { Character } from '@/common/interface';
 import { Card } from '@/components/Card/Card';
-import './HomePage.scss';
 import { Search } from '@/components/Search/Search';
 import axios from 'axios';
+import ModalWindow from '@/components/ModalWindow/ModalWindow';
+import './HomePage.scss';
 
 export const HomePage = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -12,7 +13,7 @@ export const HomePage = () => {
   const [response, setResponse] = useState(
     'https://rickandmortyapi.com/api/character' + `/?name=${term}`
   );
-  const [modalWindow, setModalWindow] = useState(false);
+  const [modalWindowVisible, setModalWindowVisible] = useState(false);
 
   useEffect(() => {
     axios.get('https://rickandmortyapi.com/api/character').then((res) => {
@@ -31,9 +32,15 @@ export const HomePage = () => {
           response={response}
           setResponse={setResponse}
         />
+        <ModalWindow
+          modalWindowVisible={modalWindowVisible}
+          setModalWindowVisible={setModalWindowVisible}
+        >
+          <div>modal window</div>
+        </ModalWindow>
         <div className="main__wrapper">
           {characters.map((el: Character) => (
-            <Card key={el.id} {...el} />
+            <Card key={el.id} {...el} showModal={setModalWindowVisible} />
           ))}
         </div>
       </main>

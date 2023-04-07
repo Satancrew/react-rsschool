@@ -36,7 +36,7 @@ export const Form = (props: IForm) => {
   };
 
   return (
-    <div className="modal">
+    <div className="wrapper-form">
       <form className="form" onSubmit={handleSubmit(onAdded)}>
         <div className="form__group">
           <label className="form__label">

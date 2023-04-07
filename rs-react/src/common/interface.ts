@@ -53,4 +53,5 @@ export type Character = {
   status?: string;
   species?: string;
   type?: string;
+  showModal?: React.Dispatch<React.SetStateAction<boolean>>;
 };

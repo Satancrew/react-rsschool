@@ -4,11 +4,6 @@ import './Search.scss';
 import axios from 'axios';
 
 export const Search = ({ term, setTerm, response, setResponse, setCharactersArr }: ISearch) => {
-  // useEffect(() => {
-  //   const term = localStorage.getItem('value');
-  //   if (term || term === '') setTerm(term);
-  //   return localStorage.setItem('value', term || '');
-  // });
   const [noFoundError, setNoFoundError] = useState(false);
 
   const onSearchChange = (ev: ChangeEvent<HTMLInputElement>) => {
