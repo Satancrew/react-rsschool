@@ -9,7 +9,7 @@ describe('FormCard test', () => {
 
   beforeEach(() => {
     render(<FormCard {...product} />);
-    card = document.querySelectorAll('.card')[0] as HTMLElement;
+    card = document.querySelector('.formcard') as HTMLElement;
   });
 
   it('rendering component', () => {

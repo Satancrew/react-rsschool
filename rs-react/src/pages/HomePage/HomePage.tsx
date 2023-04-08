@@ -6,6 +6,7 @@ import { Search } from '@/components/Search/Search';
 import axios from 'axios';
 import ModalWindow from '@/components/ModalWindow/ModalWindow';
 import ModalCard from '@/components/ModalCard/ModalCard';
+import Loader from '@/components/Loader/Loader';
 import './HomePage.scss';
 
 export const HomePage = () => {
@@ -16,12 +17,13 @@ export const HomePage = () => {
     'https://rickandmortyapi.com/api/character' + `/?name=${term}`
   );
   const [modalWindowVisible, setModalWindowVisible] = useState(false);
+  const [loaderStatus, setLoaderStatus] = useState(false);
 
   useEffect(() => {
     axios.get('https://rickandmortyapi.com/api/character').then((res) => {
       setCharacters(res.data.results);
     });
-  }, []);
+  }, [response]);
 
   return (
     <>
@@ -33,6 +35,7 @@ export const HomePage = () => {
           setCharactersArr={setCharacters}
           response={response}
           setResponse={setResponse}
+          setLoaderStatus={setLoaderStatus}
         />
         <ModalWindow
           modalWindowVisible={modalWindowVisible}
@@ -41,7 +44,9 @@ export const HomePage = () => {
           <ModalCard character={character} />
         </ModalWindow>
         <div className="main__wrapper">
-          {characters.length !== 0 ? (
+          {loaderStatus ? (
+            <Loader />
+          ) : characters.length !== 0 ? (
             characters.map((el: Character) => (
               <Card
                 key={el.id}

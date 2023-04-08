@@ -22,7 +22,8 @@ export interface ISearch {
   setTerm: (term: string) => void;
   response: string;
   setResponse: (response: string) => void;
-  setCharactersArr: React.Dispatch<React.SetStateAction<Character[]>>;
+  setCharactersArr?: React.Dispatch<React.SetStateAction<Character[]>>;
+  setLoaderStatus?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface IForm {

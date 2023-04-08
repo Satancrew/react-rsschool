@@ -3,20 +3,30 @@ import { ISearch } from '@/common/interface';
 import './Search.scss';
 import axios from 'axios';
 
-export const Search = ({ term, setTerm, response, setResponse, setCharactersArr }: ISearch) => {
+export const Search = ({
+  term,
+  setTerm,
+  response,
+  setResponse,
+  setCharactersArr,
+  setLoaderStatus,
+}: ISearch) => {
   const onSearchChange = (ev: ChangeEvent<HTMLInputElement>) => {
-    const term = ev.target.value;
-    setTerm(term);
+    setTerm(ev.target.value);
+    setLoaderStatus!(true);
   };
 
   const getCharacters = async () => {
     return axios
       .get(response)
       .then((elements) => {
-        setCharactersArr(elements.data.results);
+        setCharactersArr!(elements.data.results);
       })
       .catch(() => {
-        setCharactersArr([]);
+        setCharactersArr!([]);
+      })
+      .finally(() => {
+        setLoaderStatus!(false);
       });
   };
 
