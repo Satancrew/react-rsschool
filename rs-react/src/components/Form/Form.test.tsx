@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { vitest } from 'vitest';
 import { Form } from './Form';
 import React from 'react';
