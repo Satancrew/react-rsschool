@@ -20,10 +20,7 @@ export interface IModal {
 export interface ISearch {
   term: string;
   setTerm: (term: string) => void;
-  response: string;
-  setResponse: (response: string) => void;
-  setCharactersArr?: React.Dispatch<React.SetStateAction<Character[]>>;
-  setLoaderStatus?: React.Dispatch<React.SetStateAction<boolean>>;
+  setApiLink: (response: string) => void;
 }
 
 export interface IForm {
