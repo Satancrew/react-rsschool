@@ -9,7 +9,7 @@ describe('<Form />', () => {
   const init = () => {
     const mockData = vitest.fn();
     render(<Form onAddProduct={mockData} />);
-    formElement = screen.getByTestId('form');
+    formElement = document.querySelector('.form') as HTMLFormElement;
   };
 
   it('render component', () => {
