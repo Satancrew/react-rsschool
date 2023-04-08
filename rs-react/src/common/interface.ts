@@ -61,6 +61,6 @@ export type Character = {
   getCharacter?: React.Dispatch<React.SetStateAction<Character>>;
 };
 
-export type ModalCard = {
+export type ModalCardType = {
   character: Character;
 };

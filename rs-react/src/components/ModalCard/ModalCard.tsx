@@ -1,8 +1,8 @@
 import React from 'react';
-import { ModalCard } from '@/common/interface';
+import { ModalCardType } from '@/common/interface';
 import './ModalCard.scss';
 
-const ModalCard = ({ character }: ModalCard) => {
+const ModalCard = ({ character }: ModalCardType) => {
   const { image, name, species, status, gender, id, location } = character;
   return (
     <div className="modal__content">
@@ -11,9 +11,9 @@ const ModalCard = ({ character }: ModalCard) => {
         <h3 className="modal__title">{name}</h3>
         <ul className="modal__list">
           <li className="modal__list-item">Id: {id}</li>
-          <li className="modal__list-item">Species: {species}</li>
+          <li className="modal__list-item active">Species: {species}</li>
           <li className="modal__list-item">Gender: {gender}</li>
-          <li className="modal__list-item">Status: {status}</li>
+          <li className="modal__list-item active">Status: {status}</li>
           <li className="modal__list-item">Location: {location?.name}</li>
         </ul>
       </div>

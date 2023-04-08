@@ -41,14 +41,20 @@ export const HomePage = () => {
           <ModalCard character={character} />
         </ModalWindow>
         <div className="main__wrapper">
-          {characters.map((el: Character) => (
-            <Card
-              key={el.id}
-              {...el}
-              showModal={setModalWindowVisible}
-              getCharacter={setCharacter}
-            />
-          ))}
+          {characters.length !== 0 ? (
+            characters.map((el: Character) => (
+              <Card
+                key={el.id}
+                {...el}
+                showModal={setModalWindowVisible}
+                getCharacter={setCharacter}
+              />
+            ))
+          ) : (
+            <h2 className="main__no-characters">
+              Unfortunately, the characters are not found. Try a different name.
+            </h2>
+          )}
         </div>
       </main>
     </>

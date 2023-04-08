@@ -6,7 +6,6 @@ import axios from 'axios';
 export const Search = ({ term, setTerm, response, setResponse, setCharactersArr }: ISearch) => {
   const onSearchChange = (ev: ChangeEvent<HTMLInputElement>) => {
     const term = ev.target.value;
-    localStorage.setItem('value', term);
     setTerm(term);
   };
 
@@ -15,10 +14,9 @@ export const Search = ({ term, setTerm, response, setResponse, setCharactersArr 
       .get(response)
       .then((elements) => {
         setCharactersArr(elements.data.results);
-        console.log(elements.data.results);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        setCharactersArr([]);
       });
   };
 
