@@ -46,9 +46,6 @@ export const Form = (props: IForm) => {
                   value: 3,
                   message: 'Product name must contain more than three letters',
                 },
-                // validate: {
-                //   validate: (textInput) => validationProductName(textInput),
-                // },
               })}
             />
             {errors.title && (
@@ -64,9 +61,6 @@ export const Form = (props: IForm) => {
               className="form__label-select"
               {...register('category', {
                 required: true,
-                // validate: {
-                //   validate: (categoryInput) => validationProductCategoryImage(categoryInput),
-                // },
               })}
             >
               <option value=""></option>
@@ -89,9 +83,6 @@ export const Form = (props: IForm) => {
               accept=".jpeg, .png, .jpg, .svg, .pdf"
               {...register('image', {
                 required: true,
-                // validate: {
-                //   validate: (imageInput) => validationProductCategoryImage(imageInput[0].name),
-                // },
               })}
             />
             {errors.image && <p className="form__error">Choose any picture</p>}
