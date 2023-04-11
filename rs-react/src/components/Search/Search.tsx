@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useEffect } from 'react';
 import { ISearch } from '@/common/interface';
 import './Search.scss';
 
@@ -11,6 +11,7 @@ export const Search = ({ term, setTerm, setApiLink }: ISearch) => {
   const onSearchClick = async (ev: React.KeyboardEvent<HTMLInputElement>) => {
     if (ev.key === 'Enter') {
       setApiLink(apiLinkNew + `/?name=${term}`);
+      localStorage.setItem('value', term);
       setTerm('');
     }
   };

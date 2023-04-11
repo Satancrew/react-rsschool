@@ -13,7 +13,9 @@ export const HomePage = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [character, setCharacter] = useState<Character>({} as Character);
   const [term, setTerm] = useState(localStorage.getItem('value') || '');
-  const [apiLink, setApiLink] = useState('https://rickandmortyapi.com/api/character');
+  const [apiLink, setApiLink] = useState(
+    'https://rickandmortyapi.com/api/character' + `/?name=${term}`
+  );
   const [modalWindowVisible, setModalWindowVisible] = useState(false);
   const [loaderStatus, setLoaderStatus] = useState(false);
 
