@@ -6,12 +6,13 @@ export const Search = ({ term, setTerm, setApiLink }: ISearch) => {
   const apiLinkNew = 'https://rickandmortyapi.com/api/character';
   const onSearchChange = (ev: ChangeEvent<HTMLInputElement>) => {
     setTerm(ev.target.value);
+    localStorage.setItem('value', ev.target.value);
   };
 
   const onSearchClick = async (ev: React.KeyboardEvent<HTMLInputElement>) => {
     if (ev.key === 'Enter') {
       setApiLink(apiLinkNew + `/?name=${term}`);
-      setTerm('');
+      localStorage.setItem('value', term);
     }
   };
 
