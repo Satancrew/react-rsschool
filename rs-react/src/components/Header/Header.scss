@@ -1,0 +1,58 @@
+.header {
+  height: 10vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background: #62ad9b;
+  display: flex;
+  padding: 6px 12px;
+  border-bottom: 0.2px solid #62ad9b;
+  flex-direction: column;
+  box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
+
+  @media screen and (max-width: 1120px) {
+    flex-direction: column;
+    gap: 10px;
+    height: 11vh;
+  }
+
+  &__links {
+    display: flex;
+
+    @media screen and (max-width: 500px) {
+      flex-direction: column;
+    }
+
+    .active {
+      color: white;
+    }
+  }
+
+  &__btn {
+    font-size: 1.2rem;
+    box-shadow: none;
+    background-color: transparent;
+    color: black;
+    transition: background-color 150ms;
+    line-height: 50px;
+    margin: 0 auto;
+    width: 140px;
+    text-align: center;
+    text-decoration: none;
+    border: 0;
+    border-radius: 50px;
+
+    @media screen and (max-width: 1110px) {
+      line-height: 30px;
+    }
+
+    &:hover {
+      background: darken($color: #62ad9b, $amount: 15%);
+      color: #d5c9c9;
+    }
+
+    &:active {
+      background: lighten($color: #62ad9b, $amount: 10%);
+    }
+  }
+}

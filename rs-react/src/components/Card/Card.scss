@@ -1,0 +1,22 @@
+.card {
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.2s ease-in-out;
+
+  &__image {
+    background-size: contain;
+    background: inherit;
+    padding-bottom: 2%;
+  }
+
+  &:hover {
+    box-shadow: 2px 2px 13px #323935;
+    transform: scale(102%);
+  }
+
+  &__data {
+    text-align: left;
+    font-size: 1.1rem;
+    line-height: 30px;
+  }
+}
