@@ -7,15 +7,18 @@ import axios from 'axios';
 import ModalWindow from '@/components/ModalWindow/ModalWindow';
 import ModalCard from '@/components/ModalCard/ModalCard';
 import Loader from '@/components/Loader/Loader';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { setCharactersList } from '@/store/slices/searchSlice';
 import './HomePage.scss';
 
 export const HomePage = () => {
+  const { term, isLoading, apiLink } = useAppSelector((state) => state.searchSlice);
   const [characters, setCharacters] = useState<Character[]>([]);
   const [character, setCharacter] = useState<Character>({} as Character);
-  const [term, setTerm] = useState(localStorage.getItem('value') || '');
-  const [apiLink, setApiLink] = useState(
-    'https://rickandmortyapi.com/api/character' + `/?name=${term}`
-  );
+  // const [term, setTerm] = useState(localStorage.getItem('value') || '');
+  // const [apiLink, setApiLink] = useState(
+  //   'https://rickandmortyapi.com/api/character' + `/?name=${term}`
+  // );
   const [modalWindowVisible, setModalWindowVisible] = useState(false);
   const [loaderStatus, setLoaderStatus] = useState(false);
 
@@ -40,7 +43,7 @@ export const HomePage = () => {
     <>
       <Header checkHomeBtn={true} checkAboutBtn={false} />
       <main className="main">
-        <Search term={term} setTerm={setTerm} setApiLink={setApiLink} />
+        <Search />
         <ModalWindow
           modalWindowVisible={modalWindowVisible}
           setModalWindowVisible={setModalWindowVisible}
