@@ -12,22 +12,21 @@ import { setCharactersList, setIsLoading } from '@/store/slices/searchSlice';
 import './HomePage.scss';
 
 export const HomePage = () => {
-  const { isLoading, apiLink } = useAppSelector((state) => state.searchSlice);
+  const { isLoading, apiLink, charactersList } = useAppSelector((state) => state.searchSlice);
   const dispatch = useAppDispatch();
-  const [characters, setCharacters] = useState<Character[]>([]);
   const [character, setCharacter] = useState<Character>({} as Character);
   const [modalWindowVisible, setModalWindowVisible] = useState(false);
-  console.log('zalupa');
+
   useEffect(() => {
     dispatch(setIsLoading(true));
     setTimeout(() => {
       axios
         .get(apiLink)
         .then((res) => {
-          setCharacters(res.data.results);
+          dispatch(setCharactersList(res.data.results));
         })
         .catch(() => {
-          setCharacters([]);
+          dispatch(setCharactersList([]));
         })
         .finally(() => {
           dispatch(setIsLoading(false));
@@ -49,8 +48,8 @@ export const HomePage = () => {
         <div className="main__wrapper">
           {isLoading ? (
             <Loader />
-          ) : characters.length !== 0 ? (
-            characters.map((el: Character) => (
+          ) : charactersList.length !== 0 ? (
+            charactersList.map((el: Character) => (
               <Card
                 key={el.id}
                 {...el}
