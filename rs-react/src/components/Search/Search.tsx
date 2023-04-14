@@ -1,5 +1,4 @@
 import React, { ChangeEvent } from 'react';
-// import { ISearch } from '@/common/interface';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { setApiLink, setTerm } from '@/store/slices/searchSlice';
 import './Search.scss';

@@ -1,9 +1,10 @@
 import React from 'react';
-import { ModalCardType } from '@/common/interface';
 import './ModalCard.scss';
+import { useAppSelector } from '@/hooks/redux';
 
-const ModalCard = ({ character }: ModalCardType) => {
-  const { image, name, species, status, gender, id, location } = character;
+const ModalCard = () => {
+  const { character } = useAppSelector((state) => state.modalSlice);
+  const { image, name, id, species, gender, status, location } = character;
   return (
     <div className="modal__content">
       <img className="modal__image" alt="character_image" src={image} />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Header from '@/components/Header/Header';
 import { Character } from '@/common/interface';
 import { Card } from '@/components/Card/Card';
@@ -14,8 +14,6 @@ import './HomePage.scss';
 export const HomePage = () => {
   const { isLoading, apiLink, charactersList } = useAppSelector((state) => state.searchSlice);
   const dispatch = useAppDispatch();
-  const [character, setCharacter] = useState<Character>({} as Character);
-  const [modalWindowVisible, setModalWindowVisible] = useState(false);
 
   useEffect(() => {
     dispatch(setIsLoading(true));
@@ -39,24 +37,14 @@ export const HomePage = () => {
       <Header checkHomeBtn={true} checkAboutBtn={false} />
       <main className="main">
         <Search />
-        <ModalWindow
-          modalWindowVisible={modalWindowVisible}
-          setModalWindowVisible={setModalWindowVisible}
-        >
-          <ModalCard character={character} />
+        <ModalWindow>
+          <ModalCard />
         </ModalWindow>
         <div className="main__wrapper">
           {isLoading ? (
             <Loader />
           ) : charactersList.length !== 0 ? (
-            charactersList.map((el: Character) => (
-              <Card
-                key={el.id}
-                {...el}
-                showModal={setModalWindowVisible}
-                getCharacter={setCharacter}
-              />
-            ))
+            charactersList.map((el: Character) => <Card key={el.id} {...el} />)
           ) : (
             <h2 className="main__no-characters">
               Unfortunately, the characters are not found. Try a different name.
