@@ -8,22 +8,18 @@ import ModalWindow from '@/components/ModalWindow/ModalWindow';
 import ModalCard from '@/components/ModalCard/ModalCard';
 import Loader from '@/components/Loader/Loader';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { setCharactersList } from '@/store/slices/searchSlice';
+import { setCharactersList, setIsLoading } from '@/store/slices/searchSlice';
 import './HomePage.scss';
 
 export const HomePage = () => {
-  const { term, isLoading, apiLink } = useAppSelector((state) => state.searchSlice);
+  const { isLoading, apiLink } = useAppSelector((state) => state.searchSlice);
+  const dispatch = useAppDispatch();
   const [characters, setCharacters] = useState<Character[]>([]);
   const [character, setCharacter] = useState<Character>({} as Character);
-  // const [term, setTerm] = useState(localStorage.getItem('value') || '');
-  // const [apiLink, setApiLink] = useState(
-  //   'https://rickandmortyapi.com/api/character' + `/?name=${term}`
-  // );
   const [modalWindowVisible, setModalWindowVisible] = useState(false);
-  const [loaderStatus, setLoaderStatus] = useState(false);
-
+  console.log('zalupa');
   useEffect(() => {
-    setLoaderStatus(true);
+    dispatch(setIsLoading(true));
     setTimeout(() => {
       axios
         .get(apiLink)
@@ -34,10 +30,10 @@ export const HomePage = () => {
           setCharacters([]);
         })
         .finally(() => {
-          setLoaderStatus(false);
+          dispatch(setIsLoading(false));
         });
-    }, 300);
-  }, [apiLink]);
+    }, 400);
+  }, [dispatch, apiLink]);
 
   return (
     <>
@@ -51,7 +47,7 @@ export const HomePage = () => {
           <ModalCard character={character} />
         </ModalWindow>
         <div className="main__wrapper">
-          {loaderStatus ? (
+          {isLoading ? (
             <Loader />
           ) : characters.length !== 0 ? (
             characters.map((el: Character) => (

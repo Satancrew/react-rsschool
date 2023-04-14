@@ -20,8 +20,11 @@ const searchSlice = createSlice({
     setApiLink(state, action: PayloadAction<string>) {
       state.apiLink = action.payload;
     },
+    setIsLoading(state, action: PayloadAction<boolean>) {
+      state.isLoading = action.payload;
+    },
   },
 });
 
-export const { setTerm, setCharactersList, setApiLink } = searchSlice.actions;
+export const { setTerm, setCharactersList, setApiLink, setIsLoading } = searchSlice.actions;
 export default searchSlice.reducer;
