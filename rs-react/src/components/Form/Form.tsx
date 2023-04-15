@@ -1,11 +1,13 @@
-import { IProduct, IForm, InputTypes } from '@/common/interface';
+import { InputTypes } from '@/common/interface';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useAppDispatch } from '@/hooks/redux';
 import './Form.scss';
+import { setProducts } from '@/store/slices/formSlice';
 
-export const Form = (props: IForm) => {
+export const Form = () => {
+  const dispatch = useAppDispatch();
   const [prodId, setProdId] = useState<number>(0);
-  const { onAddProduct } = props;
   const {
     register,
     handleSubmit,
@@ -15,17 +17,18 @@ export const Form = (props: IForm) => {
 
   const onAdded = (prod: InputTypes) => {
     const image = URL.createObjectURL(prod.image[0]);
-    const card: IProduct = {
-      id: prodId,
-      title: prod.title,
-      price: prod.price,
-      stock: prod.stock,
-      category: prod.category,
-      image: image,
-      rating: prod.rating,
-      rules: prod.rules,
-    };
-    onAddProduct(card);
+    dispatch(
+      setProducts({
+        id: prodId,
+        title: prod.title,
+        price: prod.price,
+        stock: prod.stock,
+        category: prod.category,
+        image: image,
+        rating: prod.rating,
+        rules: prod.rules,
+      })
+    );
     reset();
     setProdId(prodId + 1);
   };
