@@ -1,14 +1,18 @@
 import { render } from '@testing-library/react';
-import { vitest } from 'vitest';
 import { Form } from './Form';
 import React from 'react';
+import store from '@/store/store';
+import { Provider } from 'react-redux';
 
-describe('<Form />', () => {
+describe('Form', () => {
   let formElement: HTMLFormElement;
 
   const init = () => {
-    const mockData = vitest.fn();
-    render(<Form onAddProduct={mockData} />);
+    render(
+      <Provider store={store}>
+        <Form />
+      </Provider>
+    );
     formElement = document.querySelector('.form') as HTMLFormElement;
   };
 

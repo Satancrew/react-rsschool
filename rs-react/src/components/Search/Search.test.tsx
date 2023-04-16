@@ -1,11 +1,16 @@
-import { test } from 'vitest';
 import { fireEvent, render } from '@testing-library/react';
 import { Search } from './Search';
 import React from 'react';
+import store from '@/store/store';
+import { Provider } from 'react-redux';
 
 describe('Search />', () => {
-  test('The input field and its props', () => {
-    render(<Search />);
+  it('render', () => {
+    render(
+      <Provider store={store}>
+        <Search />
+      </Provider>
+    );
     const input = document.querySelector('.search__input') as HTMLInputElement;
 
     expect(input).toBeTruthy();
@@ -22,10 +27,10 @@ describe('Search />', () => {
 
       fireEvent.change(input, {
         target: {
-          value: '',
+          value: 'Something',
         },
       });
-      expect(input.value).toBe('');
+      expect(input.value).toBe('Something');
     }
   });
 });
