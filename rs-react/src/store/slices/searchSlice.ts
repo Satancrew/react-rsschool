@@ -4,7 +4,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 const searchSlice = createSlice({
   name: 'search',
   initialState: {
-    term: localStorage.getItem('value' || ''),
+    term: localStorage.getItem('value' || '') || '',
     apiLink:
       `https://rickandmortyapi.com/api/character` + `/?name=${localStorage.getItem('value')}`,
     isLoading: false,

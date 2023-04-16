@@ -12,7 +12,7 @@ import { setCharactersList, setIsLoading } from '@/store/slices/searchSlice';
 import './HomePage.scss';
 
 export const HomePage = () => {
-  const { isLoading, apiLink, charactersList } = useAppSelector((state) => state.searchSlice);
+  const { charactersList, apiLink, isLoading } = useAppSelector((state) => state.searchSlice);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
