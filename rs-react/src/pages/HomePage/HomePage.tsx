@@ -13,7 +13,6 @@ import './HomePage.scss';
 export const HomePage = () => {
   const { search, isLoading } = useAppSelector((state) => state.searchSlice);
   const { data, error } = apiSlice.useGetCharactersByNameQuery(search);
-  console.log(isLoading);
   return (
     <>
       <Header checkHomeBtn={true} checkAboutBtn={false} />

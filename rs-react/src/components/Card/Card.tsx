@@ -14,7 +14,6 @@ export const Card = (props: Character) => {
       onClick={() => {
         dispatch(setIsModalActive(true));
         dispatch(setCharacter(props));
-        // getCharacter!(props);
       }}
     >
       <img className="card__image" src={image} />
