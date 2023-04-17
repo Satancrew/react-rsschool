@@ -1,12 +1,11 @@
 import React, { ChangeEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { setApiLink, setTerm } from '@/store/slices/searchSlice';
+import { setIsLoading, setSearch, setTerm } from '@/store/slices/searchSlice';
 import './Search.scss';
 
 export const Search = () => {
   const { term } = useAppSelector((state) => state.searchSlice);
   const dispatch = useAppDispatch();
-  const apiLinkNew = 'https://rickandmortyapi.com/api/character';
 
   const onSearchChange = (ev: ChangeEvent<HTMLInputElement>) => {
     dispatch(setTerm(ev.target.value));
@@ -15,8 +14,12 @@ export const Search = () => {
 
   const onSearchClick = async (ev: React.KeyboardEvent<HTMLInputElement>) => {
     if (ev.key === 'Enter') {
-      dispatch(setApiLink(apiLinkNew + `/?name=${term}`));
-      localStorage.setItem('value', term as string);
+      setTimeout(() => {
+        dispatch(setIsLoading(false));
+        dispatch(setSearch(term));
+        localStorage.setItem('value', term as string);
+      }, 500);
+      dispatch(setIsLoading(true));
     }
   };
 

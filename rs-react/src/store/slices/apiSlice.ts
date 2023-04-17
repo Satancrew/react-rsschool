@@ -1,7 +1,7 @@
 import { Character } from '@/common/interface';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const apiLink = 'https://rickandmortyapi.com/api/character';
+const apiLink = 'https://rickandmortyapi.com/api/';
 
 type apiType = {
   info: {
@@ -18,9 +18,14 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: apiLink,
   }),
-  endpoints: (builder) => ({
-    getCharactersByName: builder.query<apiType, string>({
-      query: (name) => `/?name=${name}`,
+  endpoints: (build) => ({
+    getCharactersByName: build.query<apiType, string>({
+      query: (name) => ({
+        url: '/character',
+        params: {
+          name: name,
+        },
+      }),
     }),
   }),
 });

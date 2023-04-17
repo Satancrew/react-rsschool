@@ -1,24 +1,18 @@
-import { Character } from '@/common/interface';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 const searchSlice = createSlice({
   name: 'search',
   initialState: {
     term: localStorage.getItem('value' || '') || '',
-    apiLink:
-      `https://rickandmortyapi.com/api/character` + `/?name=${localStorage.getItem('value')}`,
+    search: localStorage.getItem('value' || '') || '',
     isLoading: false,
-    charactersList: [] as Character[],
   },
   reducers: {
     setTerm(state, action: PayloadAction<string>) {
       state.term = action.payload;
     },
-    setCharactersList(state, action: PayloadAction<Character[]>) {
-      state.charactersList = action.payload;
-    },
-    setApiLink(state, action: PayloadAction<string>) {
-      state.apiLink = action.payload;
+    setSearch(state, action: PayloadAction<string>) {
+      state.search = action.payload;
     },
     setIsLoading(state, action: PayloadAction<boolean>) {
       state.isLoading = action.payload;
@@ -26,5 +20,5 @@ const searchSlice = createSlice({
   },
 });
 
-export const { setTerm, setCharactersList, setApiLink, setIsLoading } = searchSlice.actions;
+export const { setTerm, setIsLoading, setSearch } = searchSlice.actions;
 export default searchSlice.reducer;
