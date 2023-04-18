@@ -1,18 +1,25 @@
 import React, { ChangeEvent } from 'react';
-import { ISearch } from '@/common/interface';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { setIsLoading, setSearch, setTerm } from '@/store/slices/searchSlice';
 import './Search.scss';
 
-export const Search = ({ term, setTerm, setApiLink }: ISearch) => {
-  const apiLinkNew = 'https://rickandmortyapi.com/api/character';
+export const Search = () => {
+  const { term } = useAppSelector((state) => state.searchSlice);
+  const dispatch = useAppDispatch();
+
   const onSearchChange = (ev: ChangeEvent<HTMLInputElement>) => {
-    setTerm(ev.target.value);
+    dispatch(setTerm(ev.target.value));
     localStorage.setItem('value', ev.target.value);
   };
 
   const onSearchClick = async (ev: React.KeyboardEvent<HTMLInputElement>) => {
     if (ev.key === 'Enter') {
-      setApiLink(apiLinkNew + `/?name=${term}`);
-      localStorage.setItem('value', term);
+      setTimeout(() => {
+        dispatch(setIsLoading(false));
+        dispatch(setSearch(term));
+        localStorage.setItem('value', term as string);
+      }, 500);
+      dispatch(setIsLoading(true));
     }
   };
 
@@ -24,7 +31,7 @@ export const Search = ({ term, setTerm, setApiLink }: ISearch) => {
           name="text"
           className="search__input"
           placeholder="Enter character name"
-          value={term}
+          value={term as string}
           onChange={onSearchChange}
           onKeyDown={onSearchClick}
         />

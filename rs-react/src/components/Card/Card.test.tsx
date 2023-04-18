@@ -2,13 +2,19 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import { testData } from '../../common/data';
 import { Card } from './Card';
+import store from '@/store/store';
+import { Provider } from 'react-redux';
 
 describe('Card test', () => {
   const product = testData;
   let card: HTMLElement;
 
   beforeEach(() => {
-    render(<Card {...product} />);
+    render(
+      <Provider store={store}>
+        <Card {...product} />
+      </Provider>
+    );
     card = document.querySelectorAll('.card')[0] as HTMLElement;
   });
 

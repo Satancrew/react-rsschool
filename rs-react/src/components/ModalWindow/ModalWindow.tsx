@@ -1,27 +1,34 @@
 import React, { ReactNode } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { setIsModalActive } from '@/store/slices/modalSlice';
 import './ModalWindow.scss';
 
 type ModalWindow = {
   children: ReactNode;
-  modalWindowVisible: boolean;
-  setModalWindowVisible: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const ModalWindow = ({ children, modalWindowVisible, setModalWindowVisible }: ModalWindow) => {
-  const modalStyles = modalWindowVisible ? 'modal__active' : '';
+const ModalWindow = ({ children }: ModalWindow) => {
+  const { isModalActive } = useAppSelector((state) => state.modalSlice);
+  const dispatch = useAppDispatch();
+  const modalStyles = isModalActive ? 'modal__active' : '';
+
+  const onCloseModal = () => {
+    dispatch(setIsModalActive(false));
+  };
+
   return (
     <div
       className={`modal ${modalStyles}`}
       onClick={(ev) => {
         ev.stopPropagation();
-        setModalWindowVisible(false);
+        onCloseModal();
       }}
     >
       <div className="modal__container" onClick={(e) => e.stopPropagation()}>
         <i
           className="bx bx-error bx-md modal__close"
           onClick={() => {
-            setModalWindowVisible(false);
+            onCloseModal();
           }}
         ></i>
         {children}
