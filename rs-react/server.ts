@@ -1,0 +1,44 @@
+import fs from 'fs';
+import path from 'path';
+import express from 'express';
+import { fileURLToPath } from 'url';
+import { createServer as createViteServer } from 'vite';
+
+const app = express();
+const port = 8000;
+const dirName = path.dirname(fileURLToPath(import.meta.url));
+
+const vite = await createViteServer({
+  server: { middlewareMode: true },
+  appType: 'custom',
+});
+app.use(vite.middlewares);
+
+app.use('*', async (req, res, next) => {
+  const url = req.originalUrl;
+  try {
+    let template: string;
+    template = await fs.readFileSync(path.resolve(dirName, 'index.html'), 'utf-8');
+    template = await vite.transformIndexHtml(url, template);
+    const html = template.split(`<!--ssr-outlet-->`);
+    console.log(html);
+    const { render } = await vite.ssrLoadModule('./src/entry-server.tsx');
+    const { pipe } = await render(url, {
+      onShellReady() {
+        res.write(html[0]);
+        pipe(res);
+      },
+      onAllReady() {
+        res.write(html[0] + html[1]);
+        res.end();
+      },
+    });
+  } catch (e) {
+    vite.ssrFixStacktrace(e as Error);
+    next(e);
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server started at http://localhost:${port}`);
+});
