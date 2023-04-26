@@ -21,7 +21,6 @@ app.use('*', async (req, res, next) => {
     template = await fs.readFileSync(path.resolve(dirName, 'index.html'), 'utf-8');
     template = await vite.transformIndexHtml(url, template);
     const html = template.split(`<!--ssr-outlet-->`);
-    console.log(html);
     const { render } = await vite.ssrLoadModule('./src/entry-server.tsx');
     const { pipe } = await render(url, {
       onShellReady() {

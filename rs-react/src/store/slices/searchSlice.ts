@@ -3,8 +3,8 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 const searchSlice = createSlice({
   name: 'search',
   initialState: {
-    term: localStorage.getItem('value' || '') || '',
-    search: localStorage.getItem('value' || '') || '',
+    term: '',
+    search: '',
     isLoading: false,
   },
   reducers: {
