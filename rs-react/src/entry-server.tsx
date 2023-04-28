@@ -4,10 +4,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store from './store/store';
 
-export const render = (
-  url: string | Partial<Location>,
-  options: RenderToPipeableStreamOptions | undefined
-) => {
+export const render = (url: string, options: RenderToPipeableStreamOptions) => {
   return renderToPipeableStream(
     <React.StrictMode>
       <Provider store={store}>

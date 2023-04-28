@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { setIsLoading, setSearch, setTerm } from '@/store/slices/searchSlice';
 import './Search.scss';
 

@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from '@/components/Header/Header';
+import { Header } from '@/components/Header/Header';
 import { Character } from '@/common/interface';
 import { Card } from '@/components/Card/Card';
 import { Search } from '@/components/Search/Search';
 import ModalWindow from '@/components/ModalWindow/ModalWindow';
 import ModalCard from '@/components/ModalCard/ModalCard';
 import Loader from '@/components/Loader/Loader';
-import { useAppSelector } from '../../hooks/redux';
+import { useAppSelector } from '@/hooks/redux';
 import { apiSlice } from '@/store/slices/apiSlice';
 import './HomePage.scss';
 

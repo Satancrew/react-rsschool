@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "target": "esnext",
     "lib": ["dom", "esnext", "dom.iterable"],
-    "jsx": "react",
+    "jsx": "react-jsx",
     "module": "esnext",
     "moduleResolution": "node",
     "noImplicitAny": true,
@@ -15,9 +17,10 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
   },
-  "include": ["./src/**/*", "styled.d.ts", "server.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "ts-node": {
+    "esm": true,
+  },
+  "include": ["./src/**/*", "styled.d.ts"]
 }
