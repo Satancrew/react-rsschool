@@ -1,4 +1,4 @@
-describe('Form page', () => {
+describe('About page', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/about');
   });
