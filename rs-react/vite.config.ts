@@ -17,6 +17,11 @@ export default defineConfig({
       requireEnv: false,
     }),
   ],
+  server: {
+    host: true,
+    port: 3000,
+    watch: { ignored: '**/coverage/**' },
+  },
   test: {
     globals: true,
     environment: 'jsdon',
