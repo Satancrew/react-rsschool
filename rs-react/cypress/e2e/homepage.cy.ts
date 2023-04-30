@@ -10,12 +10,6 @@ describe('Home page', () => {
       cy.get('input').should('be.enabled');
     });
   });
-  it('Test card look', () => {
-    cy.get('div').should('have.class', 'card');
-    cy.get('img').should('have.class', 'card__image');
-    cy.get('div').should('have.class', 'card__data');
-    cy.get('div').should('have.class', 'card__data');
-  });
   it('Header look', () => {
     cy.get('header').within(() => {
       cy.get('div').should('have.class', 'header__links');

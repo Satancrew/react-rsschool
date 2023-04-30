@@ -4,6 +4,7 @@ import { testData } from '../../common/data';
 import { Card } from './Card';
 import store from '@/store/store';
 import { Provider } from 'react-redux';
+import '@testing-library/jest-dom';
 
 describe('Card test', () => {
   const product = testData;

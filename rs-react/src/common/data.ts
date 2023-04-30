@@ -11,8 +11,8 @@ export const testFormData: IProduct = {
 };
 
 export const testData: Character = {
-  id: 3,
-  name: 'Rick',
+  id: 2,
+  name: 'Morty',
   gender: 'male',
-  image: 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg',
+  image: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
 };
