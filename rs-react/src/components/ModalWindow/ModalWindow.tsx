@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { setIsModalActive } from '@/store/slices/modalSlice';
 import './ModalWindow.scss';
 

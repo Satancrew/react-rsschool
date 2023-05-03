@@ -6,7 +6,7 @@ import { AboutUsPage } from './pages/AboutUsPage/AboutUsPage';
 import { FormPage } from './pages/FormPage/FormPage';
 import './App.scss';
 
-export const App = () => {
+const App = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
@@ -16,3 +16,5 @@ export const App = () => {
     </Routes>
   );
 };
+
+export default App;

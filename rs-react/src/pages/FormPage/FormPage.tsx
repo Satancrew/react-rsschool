@@ -1,9 +1,9 @@
 import { IProduct } from '@/common/interface';
 import React from 'react';
-import Header from '@/components/Header/Header';
+import { Header } from '@/components/Header/Header';
 import { Form } from '@/components/Form/Form';
 import { FormCard } from '@/components/FormCard/FormCard';
-import { useAppSelector } from '../../hooks/redux';
+import { useAppSelector } from '@/hooks/redux';
 import './FormPage.scss';
 
 export const FormPage = () => {

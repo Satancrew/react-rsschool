@@ -1,5 +1,5 @@
 import { Character } from '@/common/interface';
-import { useAppDispatch } from '../../hooks/redux';
+import { useAppDispatch } from '@/hooks/redux';
 import { setCharacter, setIsModalActive } from '@/store/slices/modalSlice';
 import React from 'react';
 import './Card.scss';

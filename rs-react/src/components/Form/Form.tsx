@@ -83,6 +83,7 @@ export const Form = () => {
             <br />
             <input
               type="file"
+              className="form__label-image"
               accept=".jpeg, .png, .jpg, .svg, .pdf"
               {...register('image', {
                 required: true,
@@ -124,6 +125,7 @@ export const Form = () => {
           <label className="form__label-checkbox">
             <input
               type="checkbox"
+              className="form__input-checkbox"
               defaultChecked={false}
               {...register('rules', {
                 required: true,
