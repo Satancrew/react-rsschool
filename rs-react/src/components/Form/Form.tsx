@@ -1,10 +1,5 @@
-import { IProduct, IForm, InputTypes } from '../../common/interface';
+import { IProduct, IForm, InputTypes } from '@/common/interface';
 import React, { useState } from 'react';
-import {
-  validationProductCategoryImage,
-  validationProductName,
-  validationProductPriceStock,
-} from '../../common/validationRules';
 import { useForm } from 'react-hook-form';
 import './Form.scss';
 
@@ -36,7 +31,7 @@ export const Form = (props: IForm) => {
   };
 
   return (
-    <div className="modal">
+    <div className="wrapper-form">
       <form className="form" onSubmit={handleSubmit(onAdded)}>
         <div className="form__group">
           <label className="form__label">
@@ -47,8 +42,9 @@ export const Form = (props: IForm) => {
               type="text"
               {...register('title', {
                 required: true,
-                validate: {
-                  validate: (textInput) => validationProductName(textInput),
+                minLength: {
+                  value: 3,
+                  message: 'Product name must contain more than three letters',
                 },
               })}
             />
@@ -65,9 +61,6 @@ export const Form = (props: IForm) => {
               className="form__label-select"
               {...register('category', {
                 required: true,
-                validate: {
-                  validate: (categoryInput) => validationProductCategoryImage(categoryInput),
-                },
               })}
             >
               <option value=""></option>
@@ -90,9 +83,6 @@ export const Form = (props: IForm) => {
               accept=".jpeg, .png, .jpg, .svg, .pdf"
               {...register('image', {
                 required: true,
-                validate: {
-                  validate: (imageInput) => validationProductCategoryImage(imageInput[0].name),
-                },
               })}
             />
             {errors.image && <p className="form__error">Choose any picture</p>}
@@ -107,9 +97,6 @@ export const Form = (props: IForm) => {
               defaultValue=""
               {...register('price', {
                 required: true,
-                validate: {
-                  validate: (priceInput) => validationProductPriceStock(priceInput),
-                },
               })}
             />
           </label>
@@ -121,9 +108,6 @@ export const Form = (props: IForm) => {
               defaultValue=""
               {...register('stock', {
                 required: true,
-                validate: {
-                  validate: (stockInput) => validationProductPriceStock(stockInput),
-                },
               })}
             />
           </label>
@@ -140,9 +124,6 @@ export const Form = (props: IForm) => {
               defaultChecked={false}
               {...register('rules', {
                 required: true,
-                validate: {
-                  validate: (rulesInput) => (rulesInput ? true : false),
-                },
               })}
             />
             Check me if u want add product

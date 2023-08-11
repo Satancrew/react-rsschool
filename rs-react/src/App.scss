@@ -7,8 +7,17 @@
   font-family: 'Varela Round', sans-serif;
 }
 
+html {
+  background: #62c4ad;
+}
+
 #root {
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
+
+  &__hidden {
+    overflow-y: hidden;
+  }
 }
+

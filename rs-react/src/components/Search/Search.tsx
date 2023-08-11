@@ -1,19 +1,19 @@
-import React, { useState, ChangeEvent, useEffect } from 'react';
+import React, { ChangeEvent } from 'react';
+import { ISearch } from '@/common/interface';
 import './Search.scss';
 
-export const Search = () => {
-  const [term, setTerm] = useState(localStorage.getItem('value') || '');
-
-  useEffect(() => {
-    const term = localStorage.getItem('value');
-    if (term || term === '') setTerm(term);
-    return localStorage.setItem('value', term || '');
-  }, [term]);
-
+export const Search = ({ term, setTerm, setApiLink }: ISearch) => {
+  const apiLinkNew = 'https://rickandmortyapi.com/api/character';
   const onSearchChange = (ev: ChangeEvent<HTMLInputElement>) => {
-    const term = ev.target.value;
-    localStorage.setItem('value', term);
-    setTerm(term);
+    setTerm(ev.target.value);
+    localStorage.setItem('value', ev.target.value);
+  };
+
+  const onSearchClick = async (ev: React.KeyboardEvent<HTMLInputElement>) => {
+    if (ev.key === 'Enter') {
+      setApiLink(apiLinkNew + `/?name=${term}`);
+      localStorage.setItem('value', term);
+    }
   };
 
   return (
@@ -23,9 +23,10 @@ export const Search = () => {
           type="text"
           name="text"
           className="search__input"
-          placeholder="What are u looking for?"
+          placeholder="Enter character name"
           value={term}
           onChange={onSearchChange}
+          onKeyDown={onSearchClick}
         />
       </div>
     </div>

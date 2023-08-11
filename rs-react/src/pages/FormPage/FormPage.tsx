@@ -1,8 +1,8 @@
-import { IProduct } from '../../common/interface';
+import { IProduct } from '@/common/interface';
 import React, { useState } from 'react';
-import { Header } from '../../components/Header/Header';
-import { Form } from '../../components/Form/Form';
-import { Card } from '../../components/Card/Card';
+import Header from '@/components/Header/Header';
+import { Form } from '@/components/Form/Form';
+import { FormCard } from '@/components/FormCard/FormCard';
 import './FormPage.scss';
 
 export const FormPage = () => {
@@ -19,16 +19,7 @@ export const FormPage = () => {
       <Form onAddProduct={onAddProduct} />
       <div className="form__list-items">
         {products.map((el: IProduct) => (
-          <Card
-            key={el.id}
-            id={el.id}
-            title={el.title}
-            price={el.price}
-            image={el.image}
-            rating={el.rating}
-            stock={el.stock}
-            category={el.category}
-          />
+          <FormCard key={el.id} {...el} />
         ))}
       </div>
     </>

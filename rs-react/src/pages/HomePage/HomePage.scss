@@ -2,11 +2,17 @@
   width: 100%;
   &__wrapper {
     width: 80%;
-    margin: 2% auto;
+    margin: 0 auto;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 35px;
+    margin-bottom: 30px;
+  }
+  &__no-characters {
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
   }
 }
